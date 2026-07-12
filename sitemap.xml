@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 도메인 연결 후 <loc> URL을 실제 도메인으로 수정하세요. -->
+<!-- README: canonical, og:url도 동일하게 수정 필요 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://aireadingclub.kr/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://aireadingclub.kr/about</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aireadingclub.kr/books</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aireadingclub.kr/program</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aireadingclub.kr/ai-use</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aireadingclub.kr/benefits</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aireadingclub.kr/join</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+</urlset>

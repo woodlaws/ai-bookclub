@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>가입 안내 | 임헌수의 AI 독서클럽</title>
+<meta name="description" content="임헌수의 AI 독서클럽 가입 안내 페이지입니다. 매일 독서 인증, 월 2회 새벽 줌미팅, AI 액션플랜을 함께할 정예 멤버를 모집합니다." />
+<meta property="og:title" content="가입 안내 | 임헌수의 AI 독서클럽" />
+<meta property="og:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버를 모집합니다." />
+<meta property="og:url" content="https://aireadingclub.kr/join" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://aireadingclub.kr/og-image.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="가입 안내 | 임헌수의 AI 독서클럽" />
+<meta name="twitter:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버를 모집합니다." />
+<meta name="twitter:image" content="https://aireadingclub.kr/og-image.svg" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="canonical" href="https://aireadingclub.kr/join" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #edf1fb; color: #1a2060; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #2563eb; }
+.staff-photo { width: 100%; aspect-ratio: 1/1; background: repeating-linear-gradient(135deg,#c8d4f0 0,#c8d4f0 1px,#dce5f8 1px,#dce5f8 14px); display: flex; align-items: center; justify-content: center; font-size: 13px; color: #6b7ab0; font-family: monospace; text-align: center; border-radius: 16px; }
+.faq-item { border-bottom: 1px solid #e8eeff; }
+.faq-item summary { list-style: none; cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 700; color: #1a2060; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item[open] summary { color: #2563eb; }
+.faq-answer { font-size: 16px; color: #4a5490; line-height: 1.8; padding-bottom: 20px; }
+@media (max-width: 768px) {
+  .nav-desktop { display: none !important; }
+  .nav-cta { display: none !important; }
+  .nav-ham { display: flex !important; }
+  .page-padding { padding-left: 24px !important; padding-right: 24px !important; }
+  .staff-grid { grid-template-columns: 1fr !important; }
+  .recruit-grid { grid-template-columns: 1fr 1fr !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
+  .cost-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+</helmet>
+
+<!-- NAV -->
+<nav style="position: sticky; top: 0; z-index: 100; background: rgba(237,241,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,32,96,0.08);">
+  <div class="page-padding" style="max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; gap: 0;">
+    <a href="AI독서클럽 랜딩페이지.dc.html" style="display: flex; align-items: center; gap: 6px; border: 1.5px solid #1a2060; border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #1a2060; flex-shrink: 0; white-space: nowrap;">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="3" stroke="#1a2060" stroke-width="1.5"/><path d="M6 8v3" stroke="#1a2060" stroke-width="1.5" stroke-linecap="round"/></svg>
+      AI Book Club
+    </a>
+    <div class="nav-desktop" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 16px; font-weight: 500; color: #2a3580; white-space: nowrap;">
+      <a href="AI독서클럽 랜딩페이지.dc.html" style-hover="color:#2563eb">홈</a>
+      <a href="about.dc.html" style-hover="color:#2563eb">클럽 소개</a>
+      <a href="books.dc.html" style-hover="color:#2563eb">선정 도서</a>
+      <a href="program.dc.html" style-hover="color:#2563eb">프로그램</a>
+      <a href="ai-use.dc.html" style-hover="color:#2563eb">AI 활용</a>
+      <a href="benefits.dc.html" style-hover="color:#2563eb">멤버 혜택</a>
+      <a href="join.dc.html" style="color: #1a2060; font-weight: 700;" style-hover="color:#2563eb">가입 안내</a>
+    </div>
+    <button class="nav-ham" onClick="{{ toggleMobile }}" style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; flex-shrink: 0;">
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+    </button>
+    <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" class="nav-cta" style="flex-shrink: 0; background: #2563eb; color: #fff; border-radius: 8px; padding: 10px 22px; font-size: 16px; font-weight: 700; white-space: nowrap; margin-left: 24px;" style-hover="background:#1a2060">신청하기</a>
+  </div>
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="page-padding" style="background: rgba(237,241,251,0.98); border-top: 1px solid rgba(26,32,96,0.08); padding-top: 16px; padding-bottom: 16px; display: flex; flex-direction: column;">
+      <a href="AI독서클럽 랜딩페이지.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">홈</a>
+      <a href="about.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">클럽 소개</a>
+      <a href="books.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">선정 도서</a>
+      <a href="program.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">프로그램</a>
+      <a href="ai-use.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">AI 활용</a>
+      <a href="benefits.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">멤버 혜택</a>
+      <a href="join.dc.html" style="padding: 14px 0; font-size: 17px; font-weight: 700; color: #1a2060; border-bottom: 1px solid rgba(26,32,96,0.06);">가입 안내</a>
+      <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="margin-top: 16px; background: #2563eb; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 17px; font-weight: 700; text-align: center;">신청하기</a>
+    </div>
+  </sc-if>
+</nav>
+
+<!-- HERO -->
+<section style="background: linear-gradient(135deg, #0f1640 0%, #1a2060 55%, #1a2870 100%); position: relative; overflow: hidden; padding: 88px 48px;">
+  <div style="position: absolute; right: -60px; top: -60px; width: 500px; height: 500px; border: 2px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
+  <div style="position: absolute; left: 5%; bottom: -100px; width: 300px; height: 300px; border: 2px solid rgba(37,99,235,0.1); border-radius: 50%; pointer-events: none;"></div>
+  <div class="page-padding" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; text-align: center;">
+    <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.14em; color: rgba(147,197,253,1); margin-bottom: 16px; text-transform: uppercase;">Join Us</p>
+    <h1 style="font-size: clamp(32px, 5vw, 62px); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 22px; letter-spacing: -0.02em;">함께 읽고, 함께 실행할<br/>멤버를 기다립니다</h1>
+    <p style="font-size: clamp(16px, 1.8vw, 19px); color: rgba(255,255,255,0.65); line-height: 1.85; max-width: 600px; margin: 0 auto 24px;">임헌수의 AI 독서클럽은 AI 시대에 책을 더 깊이 읽고, 매일 인증하며, 월 2회 새벽 줌미팅으로 실행을 만드는 프리미엄 독서클럽입니다. 확실한 변화의 욕구가 있는 분들과 함께 갑니다.</p>
+    <div style="display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 24px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center;">
+      <span style="font-size: 15px; font-weight: 700; color: rgba(147,197,253,1);">📱 매일 인증</span>
+      <span style="color: rgba(255,255,255,0.2);">·</span>
+      <span style="font-size: 15px; font-weight: 700; color: rgba(147,197,253,1);">💻 월 2회 새벽 줌미팅</span>
+      <span style="color: rgba(255,255,255,0.2);">·</span>
+      <span style="font-size: 15px; font-weight: 700; color: rgba(147,197,253,1);">🤖 AI 액션플랜</span>
+      <span style="color: rgba(255,255,255,0.2);">·</span>
+      <span style="font-size: 15px; font-weight: 700; color: rgba(147,197,253,1);">✅ 운영진 검토 후 참여</span>
+    </div>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a href="#apply" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 18px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기</a>
+      <a href="#recruit" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 18px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">모집 기준 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF SECTION -->
+<section style="background: #fff; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">Club Leader</p>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">클럽장 소개</h2>
+      <p style="font-size: 18px; color: #5a6490; line-height: 1.75; max-width: 560px; margin: 0 auto;">임헌수의 AI 독서클럽은 운영진의 합의와 기준에 따라 함께 만들어가는 프리미엄 클럽입니다.</p>
+    </div>
+
+    <!-- 임헌수 대표 FULL WIDTH CARD -->
+    <div style="background: #1a2060; border-radius: 28px; overflow: hidden; margin-bottom: 60px;">
+      <div style="display: grid; grid-template-columns: 280px 1fr; gap: 0; align-items: stretch;">
+        <!-- Left: Photo -->
+        <div style="padding: 36px 28px; display: flex; flex-direction: column; gap: 16px; border-right: 1px solid rgba(255,255,255,0.08);">
+          <img src="uploads/임헌수.png" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: 16px; display: block;" alt="임헌수 대표" />
+          <div style="background: rgba(255,255,255,0.07); border-radius: 14px; padding: 18px 20px; text-align: center;">
+            <p style="font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px;">임헌수 대표</p>
+            <p style="font-size: 14px; color: rgba(147,197,253,1); font-weight: 600;">AI 독서클럽 총괄 리더</p>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px;">거상마케팅센터 · AI마케팅스쿨 운영</p>
+          </div>
+          <div style="background: rgba(37,99,235,0.2); border: 1px solid rgba(147,197,253,0.3); border-radius: 14px; padding: 18px 20px;">
+            <p style="font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.75;">"AI는 도구가 아니라 <strong style="color:#93c5fd;">비즈니스 시스템</strong>입니다. 콘텐츠를 만들고, 리드를 모으고, 판매까지 연결되는 <strong style="color:#93c5fd;">AI 기반 수익 구조</strong>를 함께 설계하고 실행합니다."</p>
+          </div>
+        </div>
+        <!-- Right: Content -->
+        <div style="padding: 36px 40px; display: flex; flex-direction: column; gap: 24px;">
+          <div>
+            <p style="font-size: 13px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">AI 마케팅 전문가</p>
+            <h3 style="font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.3; margin-bottom: 12px;">AI로 돈 버는 구조를 설계하고<br/>실행하는 실전형 마케팅 전문가</h3>
+            <p style="font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6;">마케팅 분야 베스트셀러 7권 저자 · 큐레이션 2권 감수 · 13년간 현장 교육 경력</p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.07); border-radius: 14px; padding: 18px 20px;">
+              <p style="font-size: 13px; font-weight: 700; color: rgba(147,197,253,1); margin-bottom: 10px; letter-spacing: 0.06em; text-transform: uppercase;">전문 분야</p>
+              <p style="font-size: 15px; color: #fff; line-height: 1.7; font-weight: 600;">AI 마케팅 · 콘텐츠 수익화<br/>랜딩페이지 · GEO · AEO</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.07); border-radius: 14px; padding: 18px 20px;">
+              <p style="font-size: 13px; font-weight: 700; color: rgba(147,197,253,1); margin-bottom: 10px; letter-spacing: 0.06em; text-transform: uppercase;">강의 방식</p>
+              <p style="font-size: 15px; color: #fff; line-height: 1.7; font-weight: 600;">실습 중심 · 결과물 중심<br/>사업 적용 중심</p>
+            </div>
+          </div>
+          <!-- Books -->
+          <div>
+            <p style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.5); margin-bottom: 14px; letter-spacing: 0.04em;">13년간 집필한 책과 감수한 책</p>
+            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/1.카카오스토리채널마케팅.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="카카오스토리채널마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2014.10.08</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/2.인스타그램마케팅.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="인스타그램마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2016.07.04</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/3.스마트스토어마케팅.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="스마트스토어마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2018.04.12</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/4.페이스북인스타그램통합마케팅.png" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="페이스북인스타그램통합마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2018.11.15</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/5.틱톡마케팅.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="틱톡마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2021.03.10</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/6.잘팔리는상세페이지기획과디자인.png" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="잘팔리는상세페이지기획과디자인" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2023.07.12</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px;">
+                  <img src="uploads/7.ChatGPT마케팅.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="ChatGPT마케팅" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2025.01.15</p>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <div style="text-align: center; flex: 1; min-width: 72px; max-width: 100px;">
+                  <img src="uploads/8.큐레이션1.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="큐레이션" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2019.09.16</p>
+                </div>
+                <div style="text-align: center; flex: 1; min-width: 72px; max-width: 100px;">
+                  <img src="uploads/9.큐레이션2.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px;" alt="큐레이션 실전편" />
+                  <p style="font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border-radius: 4px; padding: 2px 6px;">2021.04.25</p>
+                </div>
+                <div style="flex: 5;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 운영진 서브 타이틀 -->
+    <div style="text-align: center; margin-bottom: 32px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 8px; text-transform: uppercase;">Operations Team</p>
+      <h3 style="font-size: clamp(22px, 2.8vw, 32px); font-weight: 900; color: #1a2060;">함께하는 운영진</h3>
+    </div>
+
+    <div class="staff-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 40px;">
+      <!-- 이유진 팀장 -->
+      <div style="background: #1a2060; border-radius: 24px; overflow: hidden;">
+        <div style="padding: 28px 28px 0;">
+          <img src="uploads/이유진.png" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center top; border-radius: 16px; display: block;" alt="이유진 팀장" />
+        </div>
+        <div style="padding: 24px 28px 28px;">
+          <div style="font-size: 13px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.08em; margin-bottom: 6px; text-transform: uppercase;">멤버 운영</div>
+          <h3 style="font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 6px;">이유진 팀장</h3>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 600; margin-bottom: 14px;">멤버 운영 및 실행 관리</p>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75;">마케팅 현장에서 실무 경험을 바탕으로 멤버들의 참여 흐름과 실행 과정을 함께 관리합니다. 책에서 얻은 인사이트가 실제 행동으로 이어질 수 있도록 운영을 지원합니다.</p>
+        </div>
+      </div>
+      <!-- 박미희 팀장 -->
+      <div style="background: #1a2060; border-radius: 24px; overflow: hidden;">
+        <div style="padding: 28px 28px 0;">
+          <img src="uploads/박미희1.png" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center top; border-radius: 16px; display: block; background: #1a2060;" alt="박미희 팀장" />
+        </div>
+        <div style="padding: 24px 28px 28px;">
+          <div style="font-size: 13px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.08em; margin-bottom: 6px; text-transform: uppercase;">커뮤니티 운영</div>
+          <h3 style="font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 6px;">박미희 팀장</h3>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 600; margin-bottom: 14px;">커뮤니티 운영 및 멤버 케어</p>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.75;">멤버들이 꾸준히 참여하고 함께 성장할 수 있도록 커뮤니티 분위기와 소통을 돕습니다. 매일 인증과 모임 참여가 자연스럽게 이어질 수 있도록 운영을 지원합니다.</p>
+        </div>
+      </div>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 24px 32px; text-align: center; border-left: 4px solid #2563eb;">
+      <p style="font-size: 17px; font-weight: 700; color: #1a2060; line-height: 1.6;">모든 주요 운영 원칙과 방향은 운영진의 합의하에 진행됩니다.<br/>멤버 모집, 프로그램 운영, 모임 방식, 커뮤니티 기준은 운영진이 함께 논의하고 결정합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT CRITERIA -->
+<section id="recruit" style="background: #edf1fb; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">Who We're Looking For</p>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">이런 분들을 모십니다</h2>
+      <p style="font-size: 18px; color: #5a6490; line-height: 1.75; max-width: 520px; margin: 0 auto;">단순히 책을 좋아하는 분보다,<br/>책을 통해 실제 변화를 만들고 싶은 분들과 함께합니다.</p>
+    </div>
+    <div class="recruit-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 32px;">
+      <div style="background: #fff; border-radius: 20px; padding: 32px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 48px; height: 48px; background: #2563eb; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">⏰</div>
+        <div>
+          <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 8px;">월 2회 새벽 기상이 가능하신 분</h3>
+          <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">매월 둘째·넷째 주 월요일 오전 6시 줌미팅에 참여할 의지가 있는 분</p>
+        </div>
+      </div>
+      <div style="background: #fff; border-radius: 20px; padding: 32px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 48px; height: 48px; background: #2563eb; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📱</div>
+        <div>
+          <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 8px;">매일 단톡방 인증이 가능하신 분</h3>
+          <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">책을 읽고 중요한 문장, 밑줄, 깨달음, 실행 아이디어를 꾸준히 공유할 수 있는 분</p>
+        </div>
+      </div>
+      <div style="background: #fff; border-radius: 20px; padding: 32px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 48px; height: 48px; background: #1a2060; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🚀</div>
+        <div>
+          <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 8px;">확실한 변화의 욕구가 있으신 분</h3>
+          <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">책을 읽고 끝내는 것이 아니라 삶과 사업, 콘텐츠, 마케팅에 적용하고 싶은 분</p>
+        </div>
+      </div>
+      <div style="background: #fff; border-radius: 20px; padding: 32px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 48px; height: 48px; background: #1a2060; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🤝</div>
+        <div>
+          <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 8px;">함께 성장하는 태도를 가진 분</h3>
+          <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">다른 멤버의 발표와 실행을 존중하고 서로의 성장을 응원할 수 있는 분</p>
+        </div>
+      </div>
+    </div>
+    <div style="background: #1a2060; border-radius: 20px; padding: 36px; text-align: center;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 14px;">
+        <span style="background: #2563eb; color: #fff; border-radius: 20px; padding: 5px 16px; font-size: 14px; font-weight: 700;">계속 모집 중</span>
+        <span style="font-size: 18px; font-weight: 800; color: #fff;">정예 100명 목표</span>
+      </div>
+      <p style="font-size: 18px; font-weight: 700; color: rgba(147,197,253,1); line-height: 1.6; max-width: 520px; margin: 0 auto;">"많은 사람을 빠르게 모으기보다,<br/>함께 오래 성장할 수 있는 정예 멤버를 모으고 있습니다."</p>
+    </div>
+  </div>
+</section>
+
+<!-- COST -->
+<section style="background: #fff; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 900px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">Membership Fee</p>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">참여 비용 안내</h2>
+      <p style="font-size: 18px; color: #5a6490; line-height: 1.75;">부담 없이 시작하되, 꾸준히 참여할 수 있도록 월 단위로 운영합니다.</p>
+    </div>
+    <div class="cost-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+      <!-- Price card -->
+      <div style="background: #1a2060; border-radius: 24px; padding: 40px; text-align: center; display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+        <p style="font-size: 15px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.08em; text-transform: uppercase;">월정액</p>
+        <div style="font-size: clamp(52px, 8vw, 72px); font-weight: 900; color: #fff; line-height: 1;">5만원</div>
+        <p style="font-size: 17px; color: rgba(255,255,255,0.6);">/ 월 · VAT 포함</p>
+        <div style="background: rgba(255,255,255,0.08); border-radius: 12px; padding: 14px 20px; margin-top: 8px;">
+          <p style="font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;">월 2권 도서 자료 · AI 프롬프트<br/>줌미팅 참여 · 노션 템플릿</p>
+        </div>
+      </div>
+      <!-- Account + refund -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #edf1fb; border-radius: 20px; padding: 28px 24px; flex: 1;">
+          <p style="font-size: 15px; font-weight: 700; color: #2563eb; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase;">결제 계좌</p>
+          <div style="background: #fff; border-radius: 12px; padding: 16px 18px; border: 1.5px solid #e0e7ff;">
+            <p style="font-size: 14px; color: #6b7ab0; margin-bottom: 4px;">카카오뱅크</p>
+            <p style="font-size: 20px; font-weight: 800; color: #1a2060; letter-spacing: 0.04em;">3333-37-9190316</p>
+            <p style="font-size: 14px; color: #6b7ab0; margin-top: 4px;">예금주: 임헌수</p>
+          </div>
+        </div>
+        <div style="background: #fff5f0; border-radius: 20px; padding: 24px; border: 1.5px solid #f8d5c0;">
+          <p style="font-size: 15px; font-weight: 700; color: #CC785C; margin-bottom: 10px;">환불 안내</p>
+          <p style="font-size: 15px; color: #4a5490; line-height: 1.7;">첫 줌미팅에 참여해보신 뒤 방향이 맞지 않는다고 판단되시면 탈퇴 의사를 말씀해 주세요. 1회 참여분 25,000원을 제외한 차액 <strong style="color:#1a2060;">25,000원</strong>을 환불해드립니다.</p>
+        </div>
+      </div>
+    </div>
+    <div style="background: #edf1fb; border-radius: 14px; padding: 18px 24px; border-left: 4px solid #e0e7ff;">
+      <p style="font-size: 15px; color: #6b7ab0; line-height: 1.65;">⚠️ 단순 변심이나 무단 불참이 반복되는 경우에는 운영진 기준에 따라 참여가 제한될 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO APPLY -->
+<section id="apply" style="background: #edf1fb; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 1000px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">How to Apply</p>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">신청 방법</h2>
+      <p style="font-size: 18px; color: #5a6490; line-height: 1.75;">아래 신청서를 작성해 주시면 운영진 검토 후 참여 안내를 드립니다.</p>
+    </div>
+    <div class="steps-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
+      <div style="background: #fff; border-radius: 20px; padding: 32px 26px; text-align: center; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; margin: 0 auto 16px;">1</div>
+        <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 10px;">신청서 작성</h3>
+        <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">아래 구글 폼 링크를 클릭해 신청 내용을 입력해 주세요.</p>
+      </div>
+      <div style="background: #1a2060; border-radius: 20px; padding: 32px 26px; text-align: center;">
+        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; margin: 0 auto 16px;">2</div>
+        <h3 style="font-size: 19px; font-weight: 800; color: #fff; margin-bottom: 10px;">운영진 검토</h3>
+        <p style="font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7;">신청 내용을 바탕으로 운영진이 함께 검토하고 클럽 방향에 맞는 분인지 확인합니다.</p>
+      </div>
+      <div style="background: #fff; border-radius: 20px; padding: 32px 26px; text-align: center; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
+        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; margin: 0 auto 16px;">3</div>
+        <h3 style="font-size: 19px; font-weight: 800; color: #1a2060; margin-bottom: 10px;">합격자 활동 안내</h3>
+        <p style="font-size: 16px; color: #5a6490; line-height: 1.7;">함께할 수 있는 분에 한해 단톡방 참여, 선정 도서, 줌미팅 일정을 안내드립니다.</p>
+      </div>
+    </div>
+    <!-- CTA Apply Button -->
+    <div style="text-align: center;">
+      <div style="background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 4px 24px rgba(26,32,96,0.1); display: inline-block; max-width: 480px; width: 100%;">
+        <p style="font-size: 15px; font-weight: 700; color: #6b7ab0; margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase;">신청하기</p>
+        <p style="font-size: 18px; font-weight: 800; color: #1a2060; margin-bottom: 6px; line-height: 1.4;">임헌수의 AI 독서클럽</p>
+        <p style="font-size: 15px; color: #5a6490; margin-bottom: 24px; line-height: 1.6;">운영진 회의 후 함께할 수 있는 분에 한해 활동 안내를 드립니다.</p>
+        <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="display: block; background: #2563eb; color: #fff; border-radius: 12px; padding: 18px 0; font-size: 18px; font-weight: 700; text-align: center; box-shadow: 0 8px 24px rgba(37,99,235,0.35);" style-hover="background:#1a2060">신청서 작성하기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background: #fff; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 760px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">FAQ</p>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25;">자주 묻는 질문</h2>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <details class="faq-item">
+        <summary>책을 꼭 매일 읽어야 하나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">매일 완벽하게 많이 읽는 것이 목표는 아닙니다. 중요한 것은 매일 책을 펼치고, 한 문장이라도 읽고, 깨달은 점을 기록하는 습관입니다. 가능한 범위 안에서 매일 인증에 참여해 주세요.</p>
+      </details>
+      <details class="faq-item">
+        <summary>줌미팅에 꼭 참석해야 하나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">월 2회 줌미팅은 AI 독서클럽의 핵심 활동입니다. 책의 내용을 정리하고, 각자의 실행과 깨달음을 발표하는 시간이므로 가능한 참석을 권장합니다. 부득이한 일정이 있을 경우 운영진에게 미리 말씀해 주세요.</p>
+      </details>
+      <details class="faq-item">
+        <summary>사업을 하지 않아도 참여할 수 있나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">참여 가능합니다. 이 클럽은 책을 삶과 일, 콘텐츠, 사업에 적용하는 실행형 독서클럽입니다. 사업자가 아니더라도 자기계발, 커리어, 콘텐츠 제작, 업무 개선에 적용하고 싶은 분이라면 함께할 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>AI를 잘 몰라도 참여할 수 있나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">네, 가능합니다. AI를 처음 쓰는 분도 책을 더 깊이 이해하고 정리하는 방식부터 함께 익혀갑니다. Gemini, NotebookLM, ChatGPT, Claude 등을 활용하지만, 처음부터 잘해야 하는 것은 아닙니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>신청하면 누구나 참여할 수 있나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">신청 후 운영진 검토를 거쳐 참여 안내를 드립니다. 함께 읽고 실행할 수 있는 분위기를 중요하게 생각하기 때문에, 클럽의 방향성과 맞는 분들을 선별해 안내하고 있습니다.</p>
+      </details>
+      <details class="faq-item" style="border-bottom: none;">
+        <summary>중간에 그만둘 수 있나요? <span style="font-size: 20px; color: #2563eb; flex-shrink:0;">+</span></summary>
+        <p class="faq-answer">가능합니다. 1회 줌미팅 참여 후 방향이 맞지 않는 경우 탈퇴 의사를 말씀해 주시면 안내된 기준에 따라 차액 25,000원을 환불해드립니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="background: linear-gradient(135deg, #0f1640 0%, #1a2060 50%, #1e3a8a 100%); padding: 100px 48px; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(37,99,235,0.2) 0%, transparent 60%); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1; max-width: 680px; margin: 0 auto;">
+    <h2 style="font-size: clamp(26px, 4vw, 48px); font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 20px;">책을 읽고 끝내지 않고,<br/>실제 변화를 만들<br/>준비가 되셨나요?</h2>
+    <p style="font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 44px;">혼자 읽기 힘든 시대, AI와 함께 더 깊이 읽고,<br/>검증된 멤버들과 함께 실행하며,<br/>나의 삶과 사업에 적용하는 독서 경험을 시작해 보세요.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 40px; font-size: 18px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기 →</a>
+      <a href="program.dc.html" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 18px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">프로그램 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0d1235; padding: 40px 48px;">
+  <div class="page-padding" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 6px;">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M6 8v3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        AI Book Club
+      </div>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.3);">© 2026 임헌수의 AI독서클럽. All rights reserved.</p>
+    </div>
+    <div style="display: flex; gap: 24px; font-size: 15px; color: rgba(255,255,255,0.4);">
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">이용약관</a>
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">개인정보처리방침</a>
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">문의하기</a>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  renderVals() {
+    return {
+      mobileOpen: this.state.mobileOpen,
+      toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>
