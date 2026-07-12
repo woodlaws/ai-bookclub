@@ -81,6 +81,17 @@ a:hover { color: #2563eb; }
   /* 히어로 제목 모바일 크기 */
   h1 { font-size: clamp(32px, 9vw, 48px) !important; line-height: 1.15 !important; }
   h2 { font-size: clamp(26px, 7vw, 40px) !important; }
+  /* 임헌수 대표 카드: 280px 1fr → 세로 1열 */
+  [style*="280px 1fr"] { grid-template-columns: 1fr !important; }
+  [style*="280px 1fr"] > div:first-child { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+  /* 운영진 staff 카드 내부 안전 */
+  .staff-grid > div { width: 100% !important; }
+  /* 책 row 모바일 wrap */
+  [style*="flex-wrap: wrap"] { flex-wrap: wrap !important; }
+  [style*="min-width: 72px"] { min-width: 60px !important; max-width: 80px !important; flex: 1 1 60px !important; }
+  /* 클래스 없는 3열/4열 인라인 그리드 강제 1열 */
+  [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+  [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
 }
 </style>
 </helmet>

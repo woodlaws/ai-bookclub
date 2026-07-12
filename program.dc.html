@@ -76,6 +76,9 @@ a:hover { color: #2563eb; }
   /* 히어로 제목 모바일 크기 */
   h1 { font-size: clamp(32px, 9vw, 48px) !important; line-height: 1.15 !important; }
   h2 { font-size: clamp(26px, 7vw, 40px) !important; }
+  /* 클래스 없는 3열/4열 인라인 그리드 강제 1열 */
+  [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+  [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
   /* 4열 인라인 그리드 → 2열 */
   [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
   /* 타임라인 텍스트 폰트 줄임 */
