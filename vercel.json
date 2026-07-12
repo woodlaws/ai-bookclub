@@ -7,5 +7,19 @@
     { "source": "/ai-use", "destination": "/ai-use.dc.html" },
     { "source": "/benefits", "destination": "/benefits.dc.html" },
     { "source": "/join", "destination": "/join.dc.html" }
+  ],
+  "headers": [
+    {
+      "source": "/support.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/uploads/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }]
+    },
+    {
+      "source": "/(.*)\\.dc\\.html",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
   ]
 }

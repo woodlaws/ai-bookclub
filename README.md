@@ -1,129 +1,72 @@
-# 임헌수의 AI 독서클럽 — 홈페이지
+# 임헌수의 AI 독서클럽
 
-## 프로젝트 유형
-**정적 HTML** (빌드 도구 불필요 · Node.js 불필요)  
-Design Component 런타임(`support.js`)을 사용하는 멀티페이지 정적 사이트입니다.
-
----
+AI 시대에 책을 더 깊이 읽고, 매일 인증하며, 월 2회 새벽 줌미팅으로 실행을 만드는 프리미엄 독서클럽 웹사이트.
 
 ## 페이지 구조
 
-| URL | 파일 |
-|---|---|
-| `/` | `AI독서클럽 랜딩페이지.dc.html` |
-| `/about` | `about.dc.html` |
-| `/books` | `books.dc.html` |
-| `/program` | `program.dc.html` |
-| `/ai-use` | `ai-use.dc.html` |
-| `/benefits` | `benefits.dc.html` |
-| `/join` | `join.dc.html` |
+| 경로 | 파일 | 설명 |
+|------|------|------|
+| `/` | home.dc.html | 메인 랜딩 |
+| `/about` | about.dc.html | 클럽 소개 |
+| `/books` | books.dc.html | 선정 도서 |
+| `/program` | program.dc.html | 프로그램 안내 |
+| `/ai-use` | ai-use.dc.html | AI 활용법 |
+| `/benefits` | benefits.dc.html | 멤버 혜택 |
+| `/join` | join.dc.html | 가입 안내 |
 
-Vercel 클린 URL 라우팅은 `vercel.json`에 설정되어 있습니다.
+## GitHub → Vercel 배포 방법
 
----
-
-## GitHub 업로드 방법
-
-1. ZIP 파일 압축 해제
-2. GitHub 새 저장소 생성 (Public 권장)
-3. 압축 해제된 파일 전체를 저장소 루트에 업로드
-4. `Commit changes` 클릭
-
-또는 Git CLI:
+### 1. GitHub 업로드
 ```bash
 git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin https://github.com/USERNAME/REPO.git
+git remote add origin https://github.com/YOUR_USERNAME/ai-bookclub.git
 git push -u origin main
 ```
 
----
-
-## Vercel 배포 방법
-
-1. [vercel.com](https://vercel.com) → **Add New Project**
-2. GitHub 저장소 Import
-3. 아래 설정 입력:
-
-| 항목 | 값 |
-|---|---|
-| Framework Preset | **Other** |
-| Root Directory | `./` |
-| Install Command | *(비워두기)* |
-| Build Command | *(비워두기)* |
-| Output Directory | *(비워두기)* |
-| Environment Variables | 없음 |
-
+### 2. Vercel 연결
+1. [vercel.com](https://vercel.com) 로그인
+2. **Add New Project** → GitHub 저장소 선택
+3. Framework Preset: **Other** (빌드 없음)
 4. **Deploy** 클릭
 
----
+### 3. 커스텀 도메인 (선택)
+- Vercel 대시보드 → Settings → Domains
+- `aireadingclub.kr` 등 도메인 추가 후 DNS 설정
 
-## 배포 후 확인할 URL
-
-배포 후 아래 주소가 모두 정상 열리는지 확인하세요.
-
-- `/` — 홈
-- `/about` — 클럽 소개
-- `/books` — 선정 도서
-- `/program` — 프로그램
-- `/ai-use` — AI 활용
-- `/benefits` — 멤버 혜택
-- `/join` — 가입 안내
-- `/robots.txt`
-- `/sitemap.xml`
-- `/llms.txt`
-- `/og-image.svg`
-- `/favicon.svg`
-
----
-
-## 도메인 연결 후 반드시 수정할 항목
-
-도메인이 확정되면 아래 파일의 `aireadingclub.kr`을 실제 도메인으로 일괄 교체하세요.
-
-- `robots.txt` — `Sitemap:` URL
-- `sitemap.xml` — `<loc>` URL 7개
-- 각 `.dc.html` 파일 — `canonical`, `og:url` 메타 태그
-
----
-
-## 추후 콘텐츠 입력 필요 항목
-
-| 항목 | 위치 | 비고 |
-|---|---|---|
-| 구글 폼 링크 | `join.dc.html` 신청 버튼 | `href="#"` → 실제 폼 URL로 교체 |
-| 클럽 소개 영상 링크 | `AI독서클럽 랜딩페이지.dc.html` 히어로 버튼 | `href="#"` → 유튜브 등 URL |
-| 이용약관 / 개인정보처리방침 | 모든 페이지 푸터 | `href="#"` → 실제 URL |
-
----
-
-## 포함된 주요 파일
-
+### 4. 배포 후 OG 이미지 경로 업데이트
+도메인이 확정되면 각 `.dc.html` 파일의 `og:image` URL을 실제 도메인으로 변경:
 ```
-├── AI독서클럽 랜딩페이지.dc.html  ← 홈 페이지
-├── about.dc.html
-├── books.dc.html
-├── program.dc.html
-├── ai-use.dc.html
-├── benefits.dc.html
-├── join.dc.html
-├── support.js                       ← DC 런타임 (삭제 금지)
-├── index.html                       ← 홈 리다이렉트
-├── vercel.json                      ← 클린 URL 라우팅
-├── robots.txt
-├── sitemap.xml
-├── llms.txt
-├── og-image.svg                     ← SNS 공유 이미지
-├── favicon.svg                      ← 브라우저 아이콘
-├── README.md
-└── uploads/                         ← 모든 이미지 파일
+https://ai-bookclub.vercel.app/og-image.png
+→ https://YOUR_DOMAIN/og-image.png
 ```
 
----
+## 로컬 미리보기
+별도 빌드 없이 정적 서버로 실행:
+```bash
+npx serve .
+# 또는
+python3 -m http.server 3000
+```
 
-## 카카오톡 OG 미리보기
-
-배포 후 카카오톡 공유 시 미리보기가 안 보이면 캐시 초기화가 필요합니다.  
-👉 [카카오 OG 캐시 초기화](https://developers.kakao.com/tool/clear/og)에서 사이트 URL 입력 후 초기화하세요.
+## 파일 구조
+```
+/
+├── home.dc.html        # 홈
+├── about.dc.html       # 클럽 소개
+├── books.dc.html       # 선정 도서
+├── program.dc.html     # 프로그램
+├── ai-use.dc.html      # AI 활용
+├── benefits.dc.html    # 멤버 혜택
+├── join.dc.html        # 가입 안내
+├── support.js          # DC 런타임 (수정 금지)
+├── index.html          # 루트 리다이렉트
+├── vercel.json         # Vercel URL 라우팅
+├── robots.txt          # 검색엔진 크롤링
+├── sitemap.xml         # 사이트맵
+├── og-image.png        # SNS 공유 이미지
+├── favicon.png         # 파비콘
+└── uploads/            # 이미지 에셋
+```
