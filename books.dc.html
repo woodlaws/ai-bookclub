@@ -63,16 +63,33 @@ a:hover { color: #2563eb; }
   font-size: 11px; color: #6b7ab0; font-family: monospace; text-align: center; padding: 8px; border-radius: 6px;
 }
 @media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; }
+  * { word-break: keep-all; box-sizing: border-box; }
+  img { max-width: 100% !important; height: auto !important; }
   .nav-desktop { display: none !important; }
   .nav-cta { display: none !important; }
   .nav-ham { display: flex !important; }
-  .page-padding { padding-left: 24px !important; padding-right: 24px !important; }
+  .page-padding { padding-left: 20px !important; padding-right: 20px !important; }
+  section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+  /* section 안 page-padding 이중패딩 제거 */
+  section .page-padding, section > div { padding-left: 0 !important; padding-right: 0 !important; }
   .two-col { grid-template-columns: 1fr !important; }
   .books-grid { grid-template-columns: 1fr !important; }
   .phil-grid { grid-template-columns: 1fr !important; }
-  .steps-grid { grid-template-columns: 1fr 1fr !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
   .archive-grid { grid-template-columns: 1fr 1fr !important; }
-  .ai-steps-grid { grid-template-columns: 1fr 1fr !important; }
+  .ai-steps-grid { grid-template-columns: 1fr !important; }
+  footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+  /* 공통: 그리드 셀 overflow 방지 */
+  [style*="grid-template-columns"] > * { min-width: 0; overflow-wrap: anywhere; }
+  [style*="display: flex"] > * { min-width: 0; }
+  /* 히어로 제목 모바일 크기 */
+  h1 { font-size: clamp(32px, 9vw, 48px) !important; line-height: 1.15 !important; }
+  h2 { font-size: clamp(26px, 7vw, 40px) !important; }
+  /* 책 카드 내부 flex → 세로 전환 */
+  .books-grid > div > div[style*="display: flex"] { flex-direction: column !important; }
+  .books-grid [style*="flex-shrink: 0"] { width: 100% !important; padding: 16px 16px 0 16px !important; }
+  .books-grid [style*="flex-shrink: 0"] img { max-width: 150px !important; margin: 0 auto; width: auto !important; height: auto !important; display: block !important; }
 }
 </style>
 </helmet>

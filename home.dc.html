@@ -86,26 +86,53 @@ a:hover { color: #2563eb; }
   text-align: center; padding: 8px;
 }
 @media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; }
+  * { word-break: keep-all; box-sizing: border-box; }
+  img { max-width: 100% !important; height: auto !important; }
   .nav-desktop { display: none !important; }
   .nav-cta { display: none !important; }
   .nav-ham { display: flex !important; }
-  .hero-grid { grid-template-columns: 1fr !important; padding: 28px 20px 20px !important; gap: 24px !important; }
+  .page-padding { padding-left: 20px !important; padding-right: 20px !important; }
+  section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+  /* section 안 page-padding 이중패딩 제거 */
+  section .page-padding, section > div { padding-left: 0 !important; padding-right: 0 !important; }
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr !important; padding: 32px 20px 24px !important; gap: 24px !important; }
   .hero-img { display: none !important; }
-  .feat-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  /* Features - 1열 */
+  .feat-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .feat-grid > div { border-bottom: 1px solid #e8eeff; padding: 20px 16px !important; }
+  /* Stats - 2열 유지, 패딩 줄임 */
   .stats-grid { grid-template-columns: 1fr 1fr !important; }
-  .ai-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .stats-grid > div { padding: 20px 16px !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+  /* AI 도구 - 1열 */
+  .ai-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  /* About */
   .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* Benefits */
   .benefits-grid { grid-template-columns: 1fr !important; }
-  section { padding-left: 20px !important; padding-right: 20px !important; }
+  /* Grid 셀 overflow 방지 */
+  .feat-grid > div, .ai-grid > div, .stats-grid > div, .about-grid > div, .benefits-grid > div { min-width: 0; overflow-wrap: anywhere; }
+  [style*="grid-template-columns"] > * { min-width: 0; overflow-wrap: anywhere; }
+  [style*="display: flex"] > * { min-width: 0; }
+  /* Hero 제목/버튼 모바일 최적화 */
+  .hero-grid h1 { font-size: 40px !important; line-height: 1.1 !important; }
+  .hero-grid > div > p:first-child { font-size: 20px !important; }
+  .hero-grid > div > p { font-size: 17px !important; }
+  .hero-cta { flex-direction: column !important; }
+  .hero-cta > a { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+  /* CTA 버튼 */
   .cta-btns { flex-direction: column !important; align-items: stretch !important; }
   .cta-btns a { text-align: center !important; justify-content: center !important; }
+  /* Footer */
+  footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
 }
 </style>
 </helmet>
 
 <!-- NAV -->
 <nav style="position: sticky; top: 0; z-index: 100; background: rgba(237,241,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,32,96,0.08);">
-  <div style="max-width: 1340px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; gap: 0;">
+  <div class="page-padding" style="max-width: 1340px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; gap: 0;">
     <a href="home.dc.html" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; text-decoration: none;">
       <img src="uploads/로고2-removebg-preview.png" style="width: 34px; height: 34px; object-fit: contain;" alt="AI 독서클럽" />
       <span style="font-size: 20px; font-weight: 800; color: #1a2060; white-space: nowrap;">AI 독서클럽</span>
@@ -170,7 +197,7 @@ a:hover { color: #2563eb; }
         실전 적용까지 함께하는 커뮤니티
       </div>
     </div>
-    <div class="animate-5" style="display: flex; gap: 14px; flex-wrap: wrap;">
+    <div class="animate-5 hero-cta" style="display: flex; gap: 14px; flex-wrap: wrap;">
       <a href="#" style="display: flex; align-items: center; gap: 8px; background: #1a2060; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700;" style-hover="background:#2563eb">
         클럽 소개 영상 보기
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="4,2 12,7 4,12" fill="#fff"/></svg>

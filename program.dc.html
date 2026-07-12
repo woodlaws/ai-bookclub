@@ -53,16 +53,37 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #edf1fb; color: #1a2
 a { color: inherit; text-decoration: none; }
 a:hover { color: #2563eb; }
 @media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; }
+  * { word-break: keep-all; box-sizing: border-box; }
+  img { max-width: 100% !important; height: auto !important; }
   .nav-desktop { display: none !important; }
   .nav-cta { display: none !important; }
   .nav-ham { display: flex !important; }
-  .page-padding { padding-left: 24px !important; padding-right: 24px !important; }
+  .page-padding { padding-left: 20px !important; padding-right: 20px !important; }
+  section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+  /* section 안 page-padding 이중패딩 제거 */
+  section .page-padding, section > div { padding-left: 0 !important; padding-right: 0 !important; }
   .three-col { grid-template-columns: 1fr !important; }
   .two-col { grid-template-columns: 1fr !important; }
   .timeline-row { flex-direction: column !important; }
-  .steps-grid { grid-template-columns: 1fr 1fr !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
   .present-grid { grid-template-columns: 1fr !important; }
-  .flow-grid { grid-template-columns: 1fr 1fr !important; }
+  .flow-grid { grid-template-columns: 1fr !important; }
+  footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+  /* 공통: 그리드 셀 overflow 방지 */
+  [style*="grid-template-columns"] > * { min-width: 0; overflow-wrap: anywhere; }
+  [style*="display: flex"] > * { min-width: 0; }
+  /* 히어로 제목 모바일 크기 */
+  h1 { font-size: clamp(32px, 9vw, 48px) !important; line-height: 1.15 !important; }
+  h2 { font-size: clamp(26px, 7vw, 40px) !important; }
+  /* 4열 인라인 그리드 → 2열 */
+  [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+  /* 타임라인 텍스트 폰트 줄임 */
+  [style*="width: 120px"] { width: 90px !important; padding: 12px 8px !important; }
+  [style*="width: 120px"] p { font-size: 14px !important; }
+  [style*="border-left: 3px solid"] { padding: 12px 12px !important; }
+  [style*="border-left: 3px solid"] [style*="width: 40px"] { display: none !important; }
+  [style*="border-left: 3px solid"] p { font-size: 15px !important; }
 }
 </style>
 </helmet>
