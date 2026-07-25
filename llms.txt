@@ -8,7 +8,7 @@
 - /about (클럽 소개): 클럽 철학, 대상, 운영 방식, 클럽장 메시지
 - /books (선정 도서): 이달의 선정 도서, AI 독서 가이드, 아카이브
 - /program (프로그램): 운영 방식, 커리큘럼, AI 도구 활용법
-- /ai (AI활용): Gemini, NotebookLM, ChatGPT, Claude를 활용한 AI 독서법
+- /ai (AI활용): Gemini, Gemini Notebook, ChatGPT, Claude를 활용한 AI 독서법
 - /benefits (멤버 혜택): 혜택 목록, 자료, 커뮤니티
 - /writing-school (책쓰기스쿨): 읽기에서 쓰기로 이어지는 책쓰기 과정 (오픈 예정)
 - /join (가입 안내): 모집 안내, 비용, 신청 방법, FAQ

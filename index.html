@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Static OG/Twitter for crawlers -->
 <title>임헌수의 AI 독서클럽 | 읽고, AI로 정리하고, 실행하는 독서 커뮤니티</title>
 <meta name="description" content="임헌수의 AI 독서클럽은 매달 2권의 책을 AI로 깊이 이해하고, 액션플랜으로 만들어 삶과 사업에 적용하는 실행형 독서 커뮤니티입니다." />
 <meta property="og:type" content="website" />
@@ -20,15 +21,590 @@
 <meta name="twitter:description" content="책을 읽고 끝내지 않고, AI로 깊이 이해하고 실행계획으로 바꾸는 프리미엄 AI 독서클럽입니다." />
 <meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
 <link rel="canonical" href="https://ai-bookclub.vercel.app/" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<script>
-  window.location.replace('home.dc.html');
-</script>
-<noscript>
-  <meta http-equiv="refresh" content="0; url=home.dc.html">
-</noscript>
+<script src="./support.js"></script>
 </head>
-<body></body>
+<body>
+<x-dc>
+<helmet>
+<title>임헌수의 AI 독서클럽 | 읽고, AI로 정리하고, 실행하는 독서 커뮤니티</title>
+<meta name="description" content="임헌수의 AI 독서클럽은 매달 2권의 책을 AI로 깊이 이해하고, 액션플랜으로 만들어 삶과 사업에 적용하는 실행형 독서 커뮤니티입니다." />
+<meta property="og:title" content="임헌수의 AI 독서클럽" />
+<meta property="og:description" content="읽고, AI로 정리하고, 실행하는 독서 커뮤니티. 매달 2권, 매일 인증, 월 2회 줌미팅." />
+<meta property="og:url" content="https://ai-bookclub.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://ai-bookclub.vercel.app/og-image.png" />
+<meta property="og:image:secure_url" content="https://ai-bookclub.vercel.app/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="임헌수의 AI 독서클럽" />
+<meta name="twitter:description" content="읽고, AI로 정리하고, 실행하는 독서 커뮤니티. 매달 2권, 매일 인증, 월 2회 줌미팅." />
+<meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
+<link rel="canonical" href="https://ai-bookclub.vercel.app/" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #edf1fb; color: #1a2060; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #2563eb; }
+/* ── AI독서클럽 폰트 시스템 v1.0 ────────────────────────
+  --font-xs:   17px              섹션 라벨·배지
+  --font-sm:   18px              보조 설명·통계 라벨·네비
+  --font-base: 20px              본문·기능 설명·버튼
+  --font-md:   24px              카드 제목
+  --font-pre:  30px              히어로 프리타이틀
+  --font-xl:   clamp(36px,4vw,52px)  섹션 h2
+  --font-stat: 46px              통계 숫자
+  --font-hero: clamp(50px,6vw,80px)  히어로 h1
+──────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+.animate-1 { animation: fadeUp 0.6s ease both 0.1s; }
+.animate-2 { animation: fadeUp 0.6s ease both 0.25s; }
+.animate-3 { animation: fadeUp 0.6s ease both 0.4s; }
+.animate-4 { animation: fadeUp 0.6s ease both 0.55s; }
+.animate-5 { animation: fadeUp 0.6s ease both 0.7s; }
+.animate-6 { animation: fadeUp 0.6s ease both 0.85s; }
+.mockup-placeholder {
+  background: repeating-linear-gradient(
+    135deg,
+    #c8d4f0 0px, #c8d4f0 1px,
+    #dce5f8 1px, #dce5f8 14px
+  );
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #6b7ab0; font-family: monospace;
+  text-align: center; padding: 8px;
+}
+@media (max-width: 1120px) and (min-width: 769px) {
+  .nav-desktop { gap: 13px !important; font-size: 16px !important; margin-left: 14px !important; }
+  .nav-cta { display: none !important; }
+}
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden !important; }
+  * { word-break: keep-all; box-sizing: border-box; }
+  img { max-width: 100% !important; height: auto !important; }
+  .nav-desktop { display: none !important; }
+  .nav-cta { display: none !important; }
+  .nav-ham { display: flex !important; }
+  .page-padding { padding-left: 20px !important; padding-right: 20px !important; }
+  section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+  /* section 안 page-padding 이중패딩 제거 */
+  section .page-padding, section > div { padding-left: 0 !important; padding-right: 0 !important; }
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr !important; padding: 32px 20px 24px !important; gap: 24px !important; }
+  .hero-img { display: flex !important; justify-content: center !important; width: 100% !important; }
+  /* Features - 1열 */
+  .feat-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .feat-grid > div { border-bottom: 1px solid #e8eeff; padding: 20px 16px !important; }
+  /* Stats - 2열 유지, 패딩 줄임 */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
+  .stats-grid > div { padding: 20px 16px !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+  /* AI 도구 - 1열 */
+  .ai-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  /* About */
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* Benefits */
+  .benefits-grid { grid-template-columns: 1fr !important; }
+  /* Grid 셀 overflow 방지 */
+  .feat-grid > div, .ai-grid > div, .stats-grid > div, .about-grid > div, .benefits-grid > div { min-width: 0; }
+  [style*="grid-template-columns"] > * { min-width: 0; }
+  [style*="display: flex"] > * { min-width: 0; }
+  h1, h2, h3, p { word-break: keep-all !important; overflow-wrap: normal !important; }
+  /* Hero 제목/버튼 모바일 최적화 */
+  .hero-grid h1 { font-size: 40px !important; line-height: 1.1 !important; }
+  .hero-grid > div > p:first-child { font-size: 20px !important; }
+  .hero-grid > div > p { font-size: 17px !important; }
+  .hero-cta { flex-direction: column !important; }
+  .hero-cta > a { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+  /* CTA 버튼 */
+  .cta-btns { flex-direction: column !important; align-items: stretch !important; }
+  .cta-btns a { text-align: center !important; justify-content: center !important; }
+  /* Footer */
+  footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+}
+</style>
+</helmet>
+
+<!-- NAV -->
+<nav style="position: sticky; top: 0; z-index: 100; background: rgba(237,241,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,32,96,0.08);">
+  <div class="page-padding" style="max-width: 1340px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; gap: 0;">
+    <a href="/" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; text-decoration: none;">
+      <img src="uploads/로고2-removebg-preview.png" style="width: 34px; height: 34px; object-fit: contain;" alt="AI 독서클럽" />
+      <span style="font-size: 20px; font-weight: 800; color: #1a2060; white-space: nowrap;">AI 독서클럽</span>
+    </a>
+    <div class="nav-desktop" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 18px; font-weight: 500; color: #2a3580; white-space: nowrap; margin-left: 24px;">
+      <a href="/" style="color: #1a2060; font-weight: 700;" style-hover="color:#2563eb">홈</a>
+      <a href="/about" style-hover="color:#2563eb">클럽 소개</a>
+      <a href="/books" style-hover="color:#2563eb">선정 도서</a>
+      <a href="/program" style-hover="color:#2563eb">프로그램</a>
+      <a href="/ai" style-hover="color:#2563eb">AI 활용</a>
+      <a href="/benefits" style-hover="color:#2563eb">멤버 혜택</a>
+      <a href="/writing-school" style-hover="color:#2563eb">책쓰기스쿨</a>
+      <a href="/join" style-hover="color:#2563eb">가입 안내</a>
+    </div>
+    <button class="nav-ham" onClick="{{ toggleMobile }}" style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; flex-shrink: 0;">
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+      <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
+    </button>
+    <a href="https://forms.gle/QDwMA7CM3oxFNQK37" class="nav-cta" style="flex-shrink: 0; background: #1a2060; color: #fff; border-radius: 8px; padding: 10px 22px; font-size: 18px; font-weight: 700; white-space: nowrap; margin-left: 24px;" style-hover="background:#2563eb">지금 가입하기</a>
+  </div>
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background: rgba(237,241,251,0.98); border-top: 1px solid rgba(26,32,96,0.08); padding: 16px 24px; display: flex; flex-direction: column;">
+      <a href="/" style="padding: 14px 0; font-size: 20px; font-weight: 700; color: #1a2060; border-bottom: 1px solid rgba(26,32,96,0.06);">홈</a>
+      <a href="/about" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">클럽 소개</a>
+      <a href="/books" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">선정 도서</a>
+      <a href="/program" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">프로그램</a>
+      <a href="/ai" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">AI 활용</a>
+      <a href="/benefits" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">멤버 혜택</a>
+      <a href="/writing-school" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">책쓰기스쿨</a>
+      <a href="/join" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">가입 안내</a>
+      <a href="https://forms.gle/QDwMA7CM3oxFNQK37" style="margin-top: 16px; background: #1a2060; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700; text-align: center;">지금 가입하기</a>
+    </div>
+  </sc-if>
+</nav>
+
+<!-- HERO -->
+<section style="background: linear-gradient(135deg, #0f1640 0%, #1a2060 55%, #1a3070 100%); position: relative;">
+  <div class="hero-grid" style="max-width: 1340px; margin: 0 auto; padding: 24px 48px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative;">
+  <!-- BG watermark -->
+  <div style="position: absolute; right: 40px; top: 20px; font-size: 180px; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; user-select: none; letter-spacing: -0.05em;">AI</div>
+
+  <!-- Left text -->
+  <div style="position: relative; z-index: 1;">
+    <p class="animate-1" style="font-size: 30px; font-weight: 600; color: rgba(147,197,253,1); margin-bottom: 6px;">임헌수의</p>
+    <h1 class="animate-2" style="font-size: clamp(50px, 6vw, 80px); font-weight: 900; line-height: 1.05; color: #fff; letter-spacing: -0.03em; margin-bottom: 20px;">AI 독서클럽</h1>
+    <p class="animate-3" style="font-size: 24px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 28px;">책을 읽고, AI로 정리하고, 삶과 비즈니스에 적용한다.</p>
+    <div class="animate-4" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px;">
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: rgba(255,255,255,0.85);">
+        <span style="width: 20px; height: 20px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        AI와 함께 더 깊이 읽는 독서 경험
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: rgba(255,255,255,0.85);">
+        <span style="width: 20px; height: 20px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        매달 2권 검증된 도서와 인사이트 제공
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: rgba(255,255,255,0.85);">
+        <span style="width: 20px; height: 20px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        실전 적용까지 함께하는 커뮤니티
+      </div>
+    </div>
+    <div class="animate-5 hero-cta" style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <a href="https://forms.gle/QDwMA7CM3oxFNQK37" style="display: flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.4); color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700; background: transparent;" style-hover="border-color:rgba(255,255,255,0.8)">
+        지금 가입하기 →
+      </a>
+      <a href="#" style="display: flex; align-items: center; gap: 8px; background: #1a2060; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700;" style-hover="background:#2563eb">
+        클럽 소개 영상 보기
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="4,2 12,7 4,12" fill="#fff"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: hero image -->
+  <div class="animate-6 hero-img" style="display: flex; align-items: center; justify-content: center;">
+    <img src="uploads/히어로섹션이미지최종-removebg-preview-dfb571c0.png" style="width: 100%; max-width: 560px; height: auto; object-fit: contain; filter: drop-shadow(0 16px 32px rgba(26,50,120,0.18));" alt="임헌수의 AI 독서클럽 라이브 독서토론" />
+    <div style="display:none">
+      <!-- Screen -->
+      <div style="background: #1a1a2e; border-radius: 10px 10px 0 0; padding: 10px; box-shadow: 0 20px 60px rgba(26,32,96,0.25);">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+          <span style="width: 8px; height: 8px; background: #ff5f57; border-radius: 50%;"></span>
+          <span style="width: 8px; height: 8px; background: #ffbd2e; border-radius: 50%;"></span>
+          <span style="width: 8px; height: 8px; background: #28c840; border-radius: 50%;"></span>
+          <div style="display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px; margin-left: 8px;">
+            <span style="width: 6px; height: 6px; background: #ef4444; border-radius: 50;"></span>
+            <span style="font-size: 9px; color: rgba(255,255,255,0.8); font-weight: 600;">● LIVE&nbsp;&nbsp;실시간 독서토론</span>
+          </div>
+        </div>
+        <!-- Grid of avatars -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;">
+          <div class="mockup-placeholder" style="height: 72px;">임헌수</div>
+          <div class="mockup-placeholder" style="height: 72px;">이유진</div>
+          <div class="mockup-placeholder" style="height: 72px;">박형의</div>
+          <div class="mockup-placeholder" style="height: 72px;">정민희</div>
+          <div class="mockup-placeholder" style="height: 72px;">장광원</div>
+          <div class="mockup-placeholder" style="height: 72px;">백미희</div>
+          <div class="mockup-placeholder" style="height: 72px;">박시현</div>
+          <div class="mockup-placeholder" style="height: 72px;">국은화</div>
+          <div class="mockup-placeholder" style="height: 72px;">안이나</div>
+        </div>
+      </div>
+      <!-- Laptop base -->
+      <div style="background: #2d3561; height: 14px; border-radius: 0 0 4px 4px;"></div>
+      <div style="background: #1a2060; height: 8px; border-radius: 0 0 10px 10px; margin: 0 -8px;"></div>
+    </div>
+
+    <!-- Books stack -->
+    <div style="display: none;">
+      <div style="width: 100px; height: 14px; background: #1a2060; border-radius: 2px; margin-bottom: 2px;"></div>
+      <div style="width: 110px; height: 14px; background: #2563eb; border-radius: 2px; margin-bottom: 2px;"></div>
+      <div style="width: 105px; height: 14px; background: #3b51c7; border-radius: 2px;"></div>
+    </div>
+
+    <!-- Mug -->
+    <div style="display: none;">
+      <div style="width: 56px; height: 60px; background: #1a2060; border-radius: 4px 4px 8px 8px; position: relative;">
+        <div style="position: absolute; right: -14px; top: 16px; width: 14px; height: 22px; border: 4px solid #1a2060; border-left: none; border-radius: 0 8px 8px 0;"></div>
+        <div style="position: absolute; top: 8px; left: 8px; width: 24px; height: 2px; background: rgba(255,255,255,0.25); border-radius: 2px;"></div>
+      </div>
+    </div>
+
+    <!-- Phone (chat) -->
+    <div style="display: none; position: absolute; right: 0; top: 60px; width: 140px; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(26,32,96,0.2); overflow: hidden; border: 1.5px solid #e0e7ff;">
+      <div style="background: #f8f9ff; padding: 8px 10px; border-bottom: 1px solid #e8eeff;">
+        <div style="font-size: 8px; font-weight: 700; color: #1a2060;">임헌수의AI독서클럽 9</div>
+        <div style="font-size: 7px; color: #6b7ab0; margin-top: 1px;">멤버 500명</div>
+      </div>
+      <div style="padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="background: #f0f4ff; border-radius: 6px; padding: 6px; font-size: 7px; line-height: 1.4; color: #2a3580;">
+          p.295<br/>우리는 언젝인가 맥 그 행동을 더 반복해 하려 든다.
+        </div>
+        <div style="background: #2563eb; border-radius: 6px; padding: 6px; font-size: 7px; line-height: 1.4; color: #fff; align-self: flex-end;">
+          정말 인사이트가 깊네요! 👍
+        </div>
+        <div style="background: #f0f4ff; border-radius: 6px; padding: 6px; font-size: 7px; line-height: 1.4; color: #2a3580;">
+          AI 요약 보내드릴게요!
+        </div>
+      </div>
+      <div style="padding: 6px 8px; border-top: 1px solid #e8eeff; display: flex; align-items: center; gap: 4px;">
+        <div style="flex: 1; background: #f0f4ff; border-radius: 10px; height: 20px;"></div>
+        <div style="width: 20px; height: 20px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4h6M4 1l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="program" style="background: #fff; padding: 64px 48px;">
+  <div class="feat-grid" style="max-width: 1340px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;">
+    <!-- Feature 1 -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 32px 20px;">
+      <div style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="20" height="26" rx="2" stroke="#2563eb" stroke-width="2"/><path d="M10 14h12M10 18h12M10 22h8" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/><path d="M30 14c0-2-1.5-3-3-3v20c1.5 0 3-1 3-3V14z" stroke="#2563eb" stroke-width="1.5"/><path d="M18 26l3-2 3 2-3-8-3 8z" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">AI 독서 시스템</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">AI 도구를 활용해 책의 핵심을<br/>빠르게 정리하고 인사이트 도출</p>
+    </div>
+    <!-- Feature 2 -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 32px 20px;">
+      <div style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="15" cy="16" r="5" stroke="#2563eb" stroke-width="2"/><circle cx="26" cy="14" r="4" stroke="#2563eb" stroke-width="1.5"/><path d="M5 30c0-5 4.5-8 10-8s10 3 10 8" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/><path d="M26 22c3 0 7 2 7 6" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">함께 성장하는 커뮤니티</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">멤버들과 생각을 나누고<br/>배움을 실천으로 연결</p>
+    </div>
+    <!-- Feature 3 -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 32px 20px;">
+      <div style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="13" stroke="#2563eb" stroke-width="2"/><path d="M14 20l4 4 8-8" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 10l4-4M32 14l-4-4" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">실전 적용 중심</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">읽은 내용을 업무와 일상에<br/>적용하는 방법까지 안내</p>
+    </div>
+    <!-- Feature 4 -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 32px 20px;">
+      <div style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="10" y="8" width="20" height="24" rx="3" stroke="#2563eb" stroke-width="2"/><path d="M20 8V6M17 6h6" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round"/><path d="M15 18l3 3 7-7" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">다양한 멤버 혜택</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">선정 도서 제공, 라이브 Q&amp;A,<br/>템플릿 &amp; 요약 자료 제공</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background: #1a2060; padding: 56px 48px;">
+  <div class="stats-grid" style="max-width: 1340px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
+    <div style="display: flex; align-items: center; gap: 20px; padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.12);">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="13" cy="14" r="5" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/><circle cx="24" cy="12" r="4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M3 28c0-5 4-8 10-8s10 3 10 8" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round"/><path d="M24 20c3 0 7 2 7 6" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div>
+        <div style="font-size: 46px; font-weight: 900; color: #fff; line-height: 1;">10+</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.6); margin-top: 4px;">함께하는 멤버</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px; padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.12);">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="5" y="7" width="18" height="22" rx="2" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/><path d="M9 13h10M9 17h10M9 21h6" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/><path d="M27 12c0-2-1.5-3-3-3v18c1.5 0 3-1 3-3V12z" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+      <div>
+        <div style="font-size: 46px; font-weight: 900; color: #fff; line-height: 1;">4+</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.6); margin-top: 4px;">선정 도서</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px; padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.12);">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"/><polygon points="14,12 26,18 14,24" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
+      <div>
+        <div style="font-size: 46px; font-weight: 900; color: #fff; line-height: 1;">3+</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.6); margin-top: 4px;">라이브 세션</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px; padding: 0 32px;">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4l4 9 10 1.5-7.5 7 1.8 10L18 27l-8.3 4.5 1.8-10L4 14.5 14 13z" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
+      <div>
+        <div style="font-size: 46px; font-weight: 900; color: #fff; line-height: 1;">4.9/5</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.6); margin-top: 4px;">멤버 만족도</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section style="background: #fff; padding: 80px 48px;">
+  <div style="max-width: 1340px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">AI 도구 활용법</p>
+      <h2 style="font-size: clamp(36px, 4vw, 52px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">AI로 책을 읽는 방식이 달라집니다</h2>
+      <p style="font-size: 21px; color: #5a6490; line-height: 1.7;">Gemini 딥리서치, Gemini Notebook, ChatGPT, Claude를 활용해 책 한 권을 깊이 조사하고, 다시 학습하고, 시각화하고, 실전 사업에 적용합니다.</p>
+    </div>
+    <div class="ai-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;">
+      <!-- Gemini -->
+      <div style="background: #edf1fb; border-radius: 20px; padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -16px; right: -16px; width: 80px; height: 80px; background: rgba(66,133,244,0.08); border-radius: 50%;"></div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; background: #fff; border-radius: 10px; flex-shrink: 0; padding: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.1);"><img src="uploads/gemini-color.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Gemini" /></div>
+          <div style="font-size: 17px; font-weight: 700; color: #4285F4; letter-spacing: 0.08em;">STEP 01</div>
+        </div>
+        <div>
+          <div style="font-size: 24px; font-weight: 800; color: #1a2060; margin-bottom: 6px;">Gemini 딥리서치</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.65;">책을 읽기 전, 저자 배경·핵심 개념·관련 자료를 AI로 깊이 있게 사전 조사합니다.</div>
+        </div>
+        <div style="font-size: 18px; font-weight: 600; color: #4285F4;">사전 조사 완료 →</div>
+      </div>
+      <!-- Gemini Notebook -->
+      <div style="background: #edf1fb; border-radius: 20px; padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -16px; right: -16px; width: 80px; height: 80px; background: rgba(52,168,83,0.08); border-radius: 50%;"></div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; background: #fff; border-radius: 10px; flex-shrink: 0; padding: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.1);"><img src="uploads/gemini-notebook-icon.webp" style="width: 100%; height: 100%; object-fit: contain;" alt="Gemini Notebook" /></div>
+          <div style="font-size: 17px; font-weight: 700; color: #34A853; letter-spacing: 0.08em;">STEP 02</div>
+        </div>
+        <div>
+          <div style="font-size: 24px; font-weight: 800; color: #1a2060; margin-bottom: 6px;">Gemini Notebook 2차 학습</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.65;">책 내용을 업로드해 Q&A로 심화 이해하고, AI 팟캐스트로 이동 중에도 복습합니다.</div>
+        </div>
+        <div style="font-size: 18px; font-weight: 600; color: #34A853;">심화 이해 완료 →</div>
+      </div>
+      <!-- ChatGPT -->
+      <div style="background: #edf1fb; border-radius: 20px; padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -16px; right: -16px; width: 80px; height: 80px; background: rgba(16,163,127,0.08); border-radius: 50%;"></div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; background: #fff; border-radius: 10px; flex-shrink: 0; padding: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.1);"><img src="uploads/챗지피티로고.png" style="width: 100%; height: 100%; object-fit: contain;" alt="ChatGPT" /></div>
+          <div style="font-size: 17px; font-weight: 700; color: #10a37f; letter-spacing: 0.08em;">STEP 03</div>
+        </div>
+        <div>
+          <div style="font-size: 24px; font-weight: 800; color: #1a2060; margin-bottom: 6px;">ChatGPT 인포그래픽</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.65;">핵심 내용을 1페이지 인포그래픽·마인드맵으로 정리해 공유 가능한 자료로 만듭니다.</div>
+        </div>
+        <div style="font-size: 18px; font-weight: 600; color: #10a37f;">시각화 완료 →</div>
+      </div>
+      <!-- Claude -->
+      <div style="background: #1a2060; border-radius: 20px; padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -16px; right: -16px; width: 80px; height: 80px; background: rgba(204,120,92,0.15); border-radius: 50%;"></div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; background: #fff; border-radius: 10px; flex-shrink: 0; padding: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.1);"><img src="uploads/클로드_배경제거.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Claude" /></div>
+          <div style="font-size: 17px; font-weight: 700; color: #CC785C; letter-spacing: 0.08em;">STEP 04</div>
+        </div>
+        <div>
+          <div style="font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 6px;">Claude 액션플랜</div>
+          <div style="font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.65;">책 내용을 내 사업·직무에 맞는 30/60/90일 실행 계획으로 변환해 바로 적용합니다.</div>
+        </div>
+        <div style="font-size: 18px; font-weight: 600; color: #CC785C;">실전 적용 완료 →</div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <a href="/ai" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid #1a2060; color: #1a2060; border-radius: 8px; padding: 13px 28px; font-size: 20px; font-weight: 700;" style-hover="background:#1a2060;color:#fff">AI 활용 자세히 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding: 80px 48px; background: #edf1fb;">
+  <div class="about-grid" style="max-width: 1340px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+    <!-- Left -->
+    <div>
+      <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 16px; text-transform: uppercase;">About Club</p>
+      <h2 style="font-size: clamp(36px, 4vw, 52px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 24px;">책을 읽는 방식이 달라지면<br/>인생이 달라집니다.</h2>
+      <p style="font-size: 21px; color: #4a5490; line-height: 1.8; margin-bottom: 32px;">임헌수의 AI 독서클럽은 단순한 독서 모임이 아닙니다.<br/>AI와 함께 책을 깊이 이해하고, 나만의 언어로 정리하며,<br/>삶과 비즈니스에 적용하는 실전형 독서 커뮤니티입니다.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px;">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: #2a3580;">
+          <span style="width: 20px; height: 20px; border: 1.5px solid #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          AI 도구 활용법 교육 및 실습
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: #2a3580;">
+          <span style="width: 20px; height: 20px; border: 1.5px solid #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          매월 선정 도서 깊이 읽기
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: #2a3580;">
+          <span style="width: 20px; height: 20px; border: 1.5px solid #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          독서 노트 및 요약 템플릿 제공
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 20px; color: #2a3580;">
+          <span style="width: 20px; height: 20px; border: 1.5px solid #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          실전 사례 나눔 &amp; 멘토링
+        </div>
+      </div>
+      <a href="#about" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid #1a2060; color: #1a2060; border-radius: 8px; padding: 12px 22px; font-size: 17px; font-weight: 700;" style-hover="background:#1a2060;color:#fff">
+        클럽 더 알아보기 →
+      </a>
+    </div>
+
+    <!-- Right: 2x2 grid -->
+    <div id="books" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(26,32,96,0.1);">
+        <img src="uploads/7월선정도서-8e7c5088.png" style="width: 100%; height: 160px; object-fit: cover; display: block;" alt="선정 도서" />
+        <div style="padding: 14px 16px;">
+          <div style="font-size: 21px; font-weight: 700; color: #1a2060; margin-bottom: 4px;">선정 도서</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.55;">매월 임헌수가 직접 선정한<br/>검증된 도서를 함께 읽습니다.</div>
+        </div>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(26,32,96,0.1);">
+        <img src="uploads/노션활용장면.png" style="width: 100%; height: 160px; object-fit: cover; display: block;" alt="AI 독서 템플릿" />
+        <div style="padding: 14px 16px;">
+          <div style="font-size: 21px; font-weight: 700; color: #1a2060; margin-bottom: 4px;">AI 독서 템플릿</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.55;">독서 노트, 요약 템플릿 등<br/>AI 기반 자료를 제공합니다.</div>
+        </div>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(26,32,96,0.1);">
+        <img src="uploads/줌미팅화면-a5747563.png" style="width: 100%; height: 160px; object-fit: cover; display: block;" alt="라이브 & Q&A" />
+        <div style="padding: 14px 16px;">
+          <div style="font-size: 21px; font-weight: 700; color: #1a2060; margin-bottom: 4px;">라이브 &amp; Q&amp;A</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.55;">임헌수와 실시간으로 소통하며<br/>질문하고 인사이트를 나눕니다.</div>
+        </div>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(26,32,96,0.1);">
+        <img src="uploads/실전적용장면.png" style="width: 100%; height: 160px; object-fit: cover; display: block;" alt="실전 적용" />
+        <div style="padding: 14px 16px;">
+          <div style="font-size: 21px; font-weight: 700; color: #1a2060; margin-bottom: 4px;">실전 적용</div>
+          <div style="font-size: 18px; color: #5a6490; line-height: 1.55;">배운 내용을 일과 삶에 적용하고<br/>성장하는 경험을 만듭니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" style="background: #fff; padding: 80px 48px;">
+  <div style="max-width: 1340px; margin: 0 auto; text-align: center; margin-bottom: 52px;">
+    <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">Member Benefits</p>
+    <h2 style="font-size: clamp(28px, 3.2vw, 42px); font-weight: 900; color: #1a2060; line-height: 1.25;">멤버가 되면 이런 혜택을 받습니다</h2>
+  </div>
+  <div class="benefits-grid" style="max-width: 1340px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="12" height="15" rx="1.5" stroke="#fff" stroke-width="1.6"/><path d="M6 8h6M6 11h6M6 14h4" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/><path d="M17 7v10" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">월 2권 도서 자료 제공</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">매월 2권의 선정 도서에 대한 딥리서치 자료와 Claude 액션플랜 자료를 제공합니다.</p>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#fff" stroke-width="1.6"/><polygon points="8.5,7.5 15.5,11 8.5,14.5" fill="#fff"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">월 2회 라이브 세션</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">임헌수와 실시간 독서 토론 및 Q&amp;A. 질문하고 인사이트를 바로 얻어가세요.</p>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="12" rx="2" stroke="#fff" stroke-width="1.6"/><path d="M7 19h8M11 15v4" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">AI 독서 템플릿 제공</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">AI 기반 독서 노트, 요약 템플릿을 활용하여 읽은 내용을 체계적으로 정리하세요.</p>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="4" stroke="#fff" stroke-width="1.6"/><path d="M4 19c0-4 3-6 7-6s7 2 7 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">전용 커뮤니티 입장</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">검증된 독서 멤버들과 함께하는 전용 카카오톡 커뮤니티에서 매일 인사이트를 나눕니다.</p>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.5 5.5L19 9.5l-4 4 1 5.5L11 16.5 6 19l1-5.5-4-4 5.5-1z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">우선 멤버 혜택</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">임헌수의 신규 강의, 워크숍, 오프라인 이벤트를 멤버 전용 가격으로 참여할 수 있습니다.</p>
+    </div>
+    <div style="background: #edf1fb; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="width: 44px; height: 44px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">💬</div>
+      <h3 style="font-size: 24px; font-weight: 700; color: #1a2060;">매일 단톡방 독서 인증</h3>
+      <p style="font-size: 20px; color: #5a6490; line-height: 1.7;">매일 서로에게 동기부여를 하면서 새로운 인사이트를 갖게 해줍니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / JOIN -->
+<section id="join" style="background: linear-gradient(135deg, #0f1640 0%, #1a2060 50%, #1e3a8a 100%); padding: 100px 48px; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(37,99,235,0.2) 0%, transparent 60%); pointer-events: none;"></div>
+  <div style="position: absolute; top: -40px; right: -40px; width: 300px; height: 300px; border: 2px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -60px; left: -40px; width: 400px; height: 400px; border: 2px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1; max-width: 680px; margin: 0 auto;">
+    <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.14em; color: rgba(147,197,253,1); margin-bottom: 20px; text-transform: uppercase;">Join Now</p>
+    <h2 style="font-size: clamp(36px, 4vw, 56px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 20px;">AI 독서클럽과 함께<br/>성장을 시작하세요</h2>
+    <p style="font-size: 24px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 44px;">매달 검증된 도서, AI 활용 독서법, 실전 커뮤니티까지.<br/>임헌수와 함께하는 독서가 당신의 삶을 바꿉니다.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://forms.gle/QDwMA7CM3oxFNQK37" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 19px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.4);" style-hover="background:#3b72f0">
+        지금 가입하기 →
+      </a>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 20px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">
+        클럽 소개 영상 보기
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0d1235; padding: 40px 48px;">
+  <div style="max-width: 1340px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 6px;">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><path d="M6 8v3" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        AI Book Club
+      </div>
+      <p style="font-size: 17px; color: rgba(255,255,255,0.3);">© 2026 임헌수의 AI독서클럽. All rights reserved.</p>
+    </div>
+    <div style="display: flex; gap: 24px; font-size: 18px; color: rgba(255,255,255,0.4);">
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">이용약관</a>
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">개인정보처리방침</a>
+      <a href="#" style="color: rgba(255,255,255,0.4);" style-hover="color:rgba(255,255,255,0.8)">문의하기</a>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  renderVals() {
+    return {
+      mobileOpen: this.state.mobileOpen,
+      toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen }))
+    };
+  }
+}
+</script>
+</body>
 </html>

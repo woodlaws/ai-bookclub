@@ -1,16 +1,5 @@
 {
-  "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/", "destination": "/home.dc.html" },
-    { "source": "/about", "destination": "/about.dc.html" },
-    { "source": "/books", "destination": "/books.dc.html" },
-    { "source": "/program", "destination": "/program.dc.html" },
-    { "source": "/ai", "destination": "/ai-use.dc.html" },
-    { "source": "/benefits", "destination": "/benefits.dc.html" },
-    { "source": "/writing-school", "destination": "/writing-school.dc.html" },
-    { "source": "/join", "destination": "/join.dc.html" }
-  ],
   "redirects": [
     { "source": "/home.dc.html", "destination": "/", "permanent": true },
     { "source": "/about.dc.html", "destination": "/about", "permanent": true },
