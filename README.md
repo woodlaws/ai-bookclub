@@ -1,72 +1,51 @@
-# 임헌수의 AI 독서클럽
+# 임헌수의 AI 독서클럽 — 다페이지 홈페이지
 
-AI 시대에 책을 더 깊이 읽고, 매일 인증하며, 월 2회 새벽 줌미팅으로 실행을 만드는 프리미엄 독서클럽 웹사이트.
+정적 HTML 사이트 (빌드 불필요). Vercel에 그대로 배포됩니다.
 
 ## 페이지 구조
 
-| 경로 | 파일 | 설명 |
-|------|------|------|
-| `/` | home.dc.html | 메인 랜딩 |
-| `/about` | about.dc.html | 클럽 소개 |
-| `/books` | books.dc.html | 선정 도서 |
-| `/program` | program.dc.html | 프로그램 안내 |
-| `/ai-use` | ai-use.dc.html | AI 활용법 |
-| `/benefits` | benefits.dc.html | 멤버 혜택 |
-| `/join` | join.dc.html | 가입 안내 |
+| URL | 파일 | 내용 |
+|---|---|---|
+| `/` | `home.dc.html` | 홈 (메인 랜딩) |
+| `/about` | `about.dc.html` | 클럽 소개 |
+| `/books` | `books.dc.html` | 선정 도서 (2026년 8월 기준) |
+| `/program` | `program.dc.html` | 프로그램 |
+| `/ai` | `ai-use.dc.html` | AI 활용 |
+| `/benefits` | `benefits.dc.html` | 멤버 혜택 |
+| `/writing-school` | `writing-school.dc.html` | 비즈니스 책쓰기 스쿨 |
+| `/join` | `join.dc.html` | 가입 안내 |
 
-## GitHub → Vercel 배포 방법
+URL 매핑과 구 주소 301 리다이렉트는 `vercel.json`에서 처리합니다.
 
-### 1. GitHub 업로드
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ai-bookclub.git
-git push -u origin main
-```
+## GitHub 업로드
 
-### 2. Vercel 연결
-1. [vercel.com](https://vercel.com) 로그인
-2. **Add New Project** → GitHub 저장소 선택
-3. Framework Preset: **Other** (빌드 없음)
-4. **Deploy** 클릭
+1. ZIP 압축 해제
+2. GitHub 새 저장소 생성
+3. 파일 전체 업로드 후 Commit
 
-### 3. 커스텀 도메인 (선택)
-- Vercel 대시보드 → Settings → Domains
-- `aireadingclub.kr` 등 도메인 추가 후 DNS 설정
+## Vercel 배포 설정
 
-### 4. 배포 후 OG 이미지 경로 업데이트
-도메인이 확정되면 각 `.dc.html` 파일의 `og:image` URL을 실제 도메인으로 변경:
-```
-https://ai-bookclub.vercel.app/og-image.png
-→ https://YOUR_DOMAIN/og-image.png
-```
+- Framework Preset: **Other**
+- Root Directory: `./`
+- Install Command: (비워둠)
+- Build Command: (비워둠)
+- Output Directory: (비워둠)
+- Environment Variables: **필요 없음**
 
-## 로컬 미리보기
-별도 빌드 없이 정적 서버로 실행:
-```bash
-npx serve .
-# 또는
-python3 -m http.server 3000
-```
+## 배포 후 확인할 주소
 
-## 파일 구조
-```
-/
-├── home.dc.html        # 홈
-├── about.dc.html       # 클럽 소개
-├── books.dc.html       # 선정 도서
-├── program.dc.html     # 프로그램
-├── ai-use.dc.html      # AI 활용
-├── benefits.dc.html    # 멤버 혜택
-├── join.dc.html        # 가입 안내
-├── support.js          # DC 런타임 (수정 금지)
-├── index.html          # 루트 리다이렉트
-├── vercel.json         # Vercel URL 라우팅
-├── robots.txt          # 검색엔진 크롤링
-├── sitemap.xml         # 사이트맵
-├── og-image.png        # SNS 공유 이미지
-├── favicon.png         # 파비콘
-└── uploads/            # 이미지 에셋
-```
+`/` `/about` `/books` `/program` `/ai` `/benefits` `/writing-school` `/join`
+`/og-image.png` `/favicon.png` `/apple-touch-icon.png` `/robots.txt` `/sitemap.xml` `/llms.txt`
+
+## 카카오톡 공유 미리보기
+
+`/og-image.png`가 직접 열리는지 확인 후, 카카오 디버거에서 캐시 초기화:
+https://developers.kakao.com/tool/debugger/sharing
+(`도메인`, `도메인/`, `도메인/?v=2` 각각 초기화)
+
+## 추후 수정 항목
+
+- **도메인 연결 시** — 각 페이지 `canonical`, `og:url`, `sitemap.xml`, `robots.txt`의 도메인을 실제 도메인으로 교체 (현재 `https://ai-bookclub.vercel.app` 기준)
+- **책쓰기스쿨 지원 폼** — `writing-school.dc.html`의 `/join` 링크를 전용 신청 폼 URL로 교체
+- **선정 도서 갱신** — `books.dc.html`의 `#current-books` 섹션과 월별 아카이브 수정
+- 가입 신청 폼: `https://forms.gle/QDwMA7CM3oxFNQK37`

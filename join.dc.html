@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,9 @@
 <meta name="twitter:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버 모집." />
 <meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
 <link rel="canonical" href="https://ai-bookclub.vercel.app/join" />
-<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <script src="./support.js"></script>
 </head>
 <body>
@@ -42,7 +44,9 @@
 <meta name="twitter:title" content="가입 안내 | 임헌수의 AI 독서클럽" />
 <meta name="twitter:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버를 모집합니다." />
 <meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
-<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="canonical" href="https://ai-bookclub.vercel.app/join" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -58,6 +62,10 @@ a:hover { color: #2563eb; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item[open] summary { color: #2563eb; }
 .faq-answer { font-size: 18px; color: #4a5490; line-height: 1.8; padding-bottom: 20px; }
+@media (max-width: 1120px) and (min-width: 769px) {
+  .nav-desktop { gap: 13px !important; font-size: 16px !important; margin-left: 14px !important; }
+  .nav-cta { display: none !important; }
+}
 @media (max-width: 768px) {
   html, body { overflow-x: hidden !important; }
   * { word-break: keep-all; box-sizing: border-box; }
@@ -99,18 +107,19 @@ a:hover { color: #2563eb; }
 <!-- NAV -->
 <nav style="position: sticky; top: 0; z-index: 100; background: rgba(237,241,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,32,96,0.08);">
   <div class="page-padding" style="max-width: 1340px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; height: 64px; gap: 0;">
-    <a href="home.dc.html" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; text-decoration: none;">
+    <a href="/" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; text-decoration: none;">
       <img src="uploads/로고2-removebg-preview.png" style="width: 34px; height: 34px; object-fit: contain;" alt="AI 독서클럽" />
       <span style="font-size: 20px; font-weight: 800; color: #1a2060; white-space: nowrap;">AI 독서클럽</span>
     </a>
     <div class="nav-desktop" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 18px; font-weight: 500; color: #2a3580; white-space: nowrap; margin-left: 24px;">
-      <a href="home.dc.html" style-hover="color:#2563eb">홈</a>
-      <a href="about.dc.html" style-hover="color:#2563eb">클럽 소개</a>
-      <a href="books.dc.html" style-hover="color:#2563eb">선정 도서</a>
-      <a href="program.dc.html" style-hover="color:#2563eb">프로그램</a>
-      <a href="ai-use.dc.html" style-hover="color:#2563eb">AI 활용</a>
-      <a href="benefits.dc.html" style-hover="color:#2563eb">멤버 혜택</a>
-      <a href="join.dc.html" style="color: #1a2060; font-weight: 700;" style-hover="color:#2563eb">가입 안내</a>
+      <a href="/" style-hover="color:#2563eb">홈</a>
+      <a href="/about" style-hover="color:#2563eb">클럽 소개</a>
+      <a href="/books" style-hover="color:#2563eb">선정 도서</a>
+      <a href="/program" style-hover="color:#2563eb">프로그램</a>
+      <a href="/ai" style-hover="color:#2563eb">AI 활용</a>
+      <a href="/benefits" style-hover="color:#2563eb">멤버 혜택</a>
+      <a href="/writing-school" style-hover="color:#2563eb">책쓰기스쿨</a>
+      <a href="/join" style="color: #1a2060; font-weight: 700;" style-hover="color:#2563eb">가입 안내</a>
     </div>
     <button class="nav-ham" onClick="{{ toggleMobile }}" style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; flex-shrink: 0;">
       <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
@@ -121,13 +130,14 @@ a:hover { color: #2563eb; }
   </div>
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div class="page-padding" style="background: rgba(237,241,251,0.98); border-top: 1px solid rgba(26,32,96,0.08); padding-top: 16px; padding-bottom: 16px; display: flex; flex-direction: column;">
-      <a href="home.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">홈</a>
-      <a href="about.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">클럽 소개</a>
-      <a href="books.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">선정 도서</a>
-      <a href="program.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">프로그램</a>
-      <a href="ai-use.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">AI 활용</a>
-      <a href="benefits.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">멤버 혜택</a>
-      <a href="join.dc.html" style="padding: 14px 0; font-size: 20px; font-weight: 700; color: #1a2060; border-bottom: 1px solid rgba(26,32,96,0.06);">가입 안내</a>
+      <a href="/" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">홈</a>
+      <a href="/about" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">클럽 소개</a>
+      <a href="/books" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">선정 도서</a>
+      <a href="/program" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">프로그램</a>
+      <a href="/ai" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">AI 활용</a>
+      <a href="/benefits" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">멤버 혜택</a>
+      <a href="/writing-school" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">책쓰기스쿨</a>
+      <a href="/join" style="padding: 14px 0; font-size: 20px; font-weight: 700; color: #1a2060; border-bottom: 1px solid rgba(26,32,96,0.06);">가입 안내</a>
       <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="margin-top: 16px; background: #2563eb; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700; text-align: center;">신청하기</a>
     </div>
   </sc-if>
@@ -451,7 +461,7 @@ a:hover { color: #2563eb; }
     <p style="font-size: 21px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 44px;">혼자 읽기 힘든 시대, AI와 함께 더 깊이 읽고,<br/>검증된 멤버들과 함께 실행하며,<br/>나의 삶과 사업에 적용하는 독서 경험을 시작해 보세요.</p>
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
       <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 40px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기 →</a>
-      <a href="program.dc.html" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">프로그램 보기</a>
+      <a href="/program" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">프로그램 보기</a>
     </div>
   </div>
 </section>
