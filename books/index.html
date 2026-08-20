@@ -66,6 +66,7 @@ a:hover { color: #2563eb; }
   display: flex; align-items: center; justify-content: center;
   font-size: 11px; color: #6b7ab0; font-family: monospace; text-align: center; padding: 8px; border-radius: 6px;
 }
+.new-book-cover { object-fit: contain !important; background: #f7f8fc; }
 @media (max-width: 1080px) and (min-width: 769px) {
   /* 도서 카드: 태블릿 구간에서 1권씩 한 줄, 표지 폭 축소 */
   .books-grid { grid-template-columns: 1fr !important; }
@@ -110,9 +111,13 @@ a:hover { color: #2563eb; }
   .books-grid [style*="flex-shrink: 0"] { width: 100% !important; padding: 20px 0 0 !important; display: flex !important; justify-content: center !important; align-items: flex-start !important; }
   /* 표지 이미지 크기 */
   .books-grid [style*="flex-shrink: 0"] img { width: 140px !important; max-width: 140px !important; height: auto !important; aspect-ratio: 2/3 !important; object-fit: cover !important; margin: 0 auto; display: block !important; }
+  .books-grid [style*="flex-shrink: 0"] img.new-book-cover { object-fit: contain !important; }
   /* 텍스트 영역 패딩 복원 */
   .books-grid > div[style*="display: flex"] > div:last-child,
   .books-grid > div > div[style*="display: flex; gap: 0"] > div:last-child { padding: 20px 20px 24px !important; flex: unset !important; width: 100% !important; }
+}
+@media (max-width: 480px) {
+  .archive-grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </helmet>
@@ -224,12 +229,76 @@ a:hover { color: #2563eb; }
   </div>
 </section>
 
-<!-- CURRENT BOOKS: AUGUST 2026 -->
+<!-- CURRENT BOOKS: SEPTEMBER 2026 -->
 <section id="current-books" style="background: #edf1fb; padding: 80px 48px;">
   <div class="page-padding" style="max-width: 1340px; margin: 0 auto;">
     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
       <span style="background: #2563eb; color: #fff; border-radius: 20px; padding: 5px 16px; font-size: 16px; font-weight: 700; letter-spacing: 0.06em;">이번 달</span>
       <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; text-transform: uppercase;">Current Books</p>
+    </div>
+    <h2 style="font-size: clamp(33px, 4vw, 52px); font-weight: 900; color: #1a2060; line-height: 1.2; margin-bottom: 14px;">2026년 9월 선정 도서</h2>
+    <p style="font-size: 21px; color: #5a6490; line-height: 1.75; margin-bottom: 48px; max-width: 860px;"><strong style="color: #1a2060;">9월의 주제: 실행하는 사람에서 AI 검색에 선택받는 브랜드로</strong><br/>한 권은 완벽주의를 벗어나 바로 실행하는 결단력을 만들고, 한 권은 제로클릭 시대에 AI가 선택하는 브랜드와 콘텐츠 전략을 익히게 해줍니다.</p>
+
+    <div class="books-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+      <!-- Book 7: 결단 -->
+      <div style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,32,96,0.1);">
+        <div style="display: flex; gap: 0;">
+          <div style="width: 200px; flex-shrink: 0; padding: 28px 0 28px 28px;">
+            <img class="new-book-cover" src="../uploads/7.결단.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: contain; background: #f7f8fc; border-radius: 8px; box-shadow: 4px 4px 20px rgba(26,32,96,0.15); display: block;" alt="결단 책 표지" />
+          </div>
+          <div style="padding: 28px 28px 28px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="background: #edf1fb; color: #2563eb; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">📖 자기계발</span>
+              <span style="background: #edf1fb; color: #2563eb; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">결단 · 실행</span>
+            </div>
+            <h3 style="font-size: 26px; font-weight: 900; color: #1a2060; line-height: 1.3;">결단</h3>
+            <p style="font-size: 15px; color: #6b7ab0; font-weight: 600;">Start Now, Get Perfect Later</p>
+            <p style="font-size: 17px; color: #6b7ab0; font-weight: 600;">롭 무어 · 이진원 옮김</p>
+            <p style="font-size: 16px; color: #2563eb; font-weight: 700;">모임 · 2026년 9월 14일 월요일 오전 6:00</p>
+            <p style="font-size: 18px; color: #1a2060; line-height: 1.6; font-weight: 800;">“지금 시작하고, 나중에 완벽해져라”</p>
+            <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">완벽한 준비를 기다리지 않고 빠르게 결정하고 실행하는 방법을 다루는 책입니다.</p>
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+              <p style="font-size: 16px; font-weight: 700; color: #1a2060; letter-spacing: 0.04em; text-transform: uppercase;">핵심 키워드</p>
+              <div style="font-size: 17px; color: #4a5490; line-height: 1.6;">결단력 · 실행력 · 완벽주의 탈출 · 행동</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 8: 제로클릭 -->
+      <div style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,32,96,0.1);">
+        <div style="display: flex; gap: 0;">
+          <div style="width: 200px; flex-shrink: 0; padding: 28px 0 28px 28px;">
+            <img class="new-book-cover" src="../uploads/8.제로클릭.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: contain; background: #f7f8fc; border-radius: 8px; box-shadow: 4px 4px 20px rgba(26,32,96,0.15); display: block;" alt="제로클릭 책 표지" />
+          </div>
+          <div style="padding: 28px 28px 28px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="background: #fff5f0; color: #CC785C; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">🚀 마케팅</span>
+              <span style="background: #fff5f0; color: #CC785C; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">AI 검색 · GEO</span>
+            </div>
+            <h3 style="font-size: 26px; font-weight: 900; color: #1a2060; line-height: 1.3;">제로클릭</h3>
+            <p style="font-size: 15px; color: #6b7ab0; font-weight: 600;">클릭의 종말, AI 시대의 생존 전략</p>
+            <p style="font-size: 17px; color: #6b7ab0; font-weight: 600;">손승우</p>
+            <p style="font-size: 16px; color: #2563eb; font-weight: 700;">모임 · 2026년 9월 28일 월요일 오전 6:00</p>
+            <p style="font-size: 18px; color: #1a2060; line-height: 1.6; font-weight: 800;">“당신의 콘텐츠는 AI에게 선택받고 있습니까?”</p>
+            <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">검색 결과를 클릭하지 않고 AI가 답을 제공하는 시대에 브랜드와 콘텐츠가 살아남는 방법을 다루는 GEO 전략서입니다.</p>
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+              <p style="font-size: 16px; font-weight: 700; color: #1a2060; letter-spacing: 0.04em; text-transform: uppercase;">핵심 키워드</p>
+              <div style="font-size: 17px; color: #4a5490; line-height: 1.6;">제로클릭 · AI 검색 · GEO · 콘텐츠 전략</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST BOOKS: AUGUST 2026 -->
+<section id="august-2026" style="background: #fff; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 1340px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+      <span style="background: #e8eeff; color: #6b7ab0; border-radius: 20px; padding: 5px 16px; font-size: 16px; font-weight: 700; letter-spacing: 0.06em;">지난 달</span>
+      <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #6b7ab0; text-transform: uppercase;">Archive</p>
     </div>
     <h2 style="font-size: clamp(33px, 4vw, 52px); font-weight: 900; color: #1a2060; line-height: 1.2; margin-bottom: 14px;">2026년 8월 선정 도서</h2>
     <p style="font-size: 21px; color: #5a6490; line-height: 1.75; margin-bottom: 48px; max-width: 720px;">이번 달에는 미래의 나를 설계하는 책과 AI 검색 시대의 브랜드 전략을 다루는 책을 함께 읽습니다.<br/>한 권은 미래의 정체성과 실행 습관을 바꾸고, 한 권은 AI가 선택하는 브랜드 구조를 이해하게 해줍니다.</p>
@@ -480,20 +549,34 @@ a:hover { color: #2563eb; }
       <p style="font-size: 21px; color: #5a6490; line-height: 1.7;">매달 선정된 책은 이곳에 계속 쌓입니다.<br/>시간이 지날수록 AI 독서클럽의 지식 아카이브가 만들어집니다.</p>
     </div>
     <div class="archive-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-      <!-- August 2026 (current) -->
+      <!-- September 2026 (current) -->
       <a href="#current-books" style="background: #1a2060; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s;" style-hover="transform:translateY(-4px)">
         <div style="display: flex; align-items: center; justify-content: space-between;">
-          <span style="font-size: 17px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.06em;">2026년 8월</span>
+          <span style="font-size: 17px; font-weight: 700; color: rgba(147,197,253,1); letter-spacing: 0.06em;">2026년 9월</span>
           <span style="background: #2563eb; color: #fff; border-radius: 10px; padding: 3px 10px; font-size: 12px; font-weight: 700;">이번 달</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="../uploads/7.결단.jpg" style="width: 32px; height: 44px; object-fit: contain; background: #f7f8fc; border-radius: 4px; flex-shrink: 0; display: block;" alt="결단" />
+            <div><p style="font-size: 18px; font-weight: 700; color: #fff;">결단</p><p style="font-size: 16px; color: rgba(255,255,255,0.5);">결단력 · 실행력</p></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="../uploads/8.제로클릭.jpg" style="width: 32px; height: 44px; object-fit: contain; background: #f7f8fc; border-radius: 4px; flex-shrink: 0; display: block;" alt="제로클릭" />
+            <div><p style="font-size: 18px; font-weight: 700; color: #fff;">제로클릭</p><p style="font-size: 16px; color: rgba(255,255,255,0.5);">AI 검색 · GEO</p></div>
+          </div>
+        </div>
+      </a>
+      <!-- August 2026 -->
+      <a href="#august-2026" style="background: #edf1fb; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s;" style-hover="transform:translateY(-4px)">
+        <span style="font-size: 17px; font-weight: 700; color: #6b7ab0; letter-spacing: 0.06em;">2026년 8월</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
             <img src="../uploads/퓨처셀프.jpg" style="width: 32px; height: 44px; object-fit: cover; border-radius: 4px; flex-shrink: 0; display: block;" alt="퓨처셀프" />
-            <div><p style="font-size: 18px; font-weight: 700; color: #fff;">퓨처셀프</p><p style="font-size: 16px; color: rgba(255,255,255,0.5);">자기계발 · 미래 정체성</p></div>
+            <div><p style="font-size: 18px; font-weight: 700; color: #1a2060;">퓨처셀프</p><p style="font-size: 16px; color: #6b7ab0;">자기계발 · 미래 정체성</p></div>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
             <img src="../uploads/AI가선택하는브랜드의미밀.jpg" style="width: 32px; height: 44px; object-fit: cover; border-radius: 4px; flex-shrink: 0; display: block;" alt="AI가 선택하는 브랜드의 비밀, AEO" />
-            <div><p style="font-size: 18px; font-weight: 700; color: #fff;">AI가 선택하는 브랜드의 비밀, AEO</p><p style="font-size: 16px; color: rgba(255,255,255,0.5);">마케팅 · AI 검색 · AEO</p></div>
+            <div><p style="font-size: 18px; font-weight: 700; color: #1a2060;">AI가 선택하는 브랜드의 비밀, AEO</p><p style="font-size: 16px; color: #6b7ab0;">마케팅 · AI 검색 · AEO</p></div>
           </div>
         </div>
       </a>

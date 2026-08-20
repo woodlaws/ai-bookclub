@@ -8,7 +8,7 @@
 |---|---|---|
 | `/` | `index.html` | 홈 (메인 랜딩) |
 | `/about` | `about/index.html` | 클럽 소개 |
-| `/books` | `books/index.html` | 선정 도서 (2026년 8월 기준) |
+| `/books` | `books/index.html` | 선정 도서 (2026년 9월 기준) |
 | `/program` | `program/index.html` | 프로그램 |
 | `/ai` | `ai/index.html` | AI 활용 |
 | `/benefits` | `benefits/index.html` | 멤버 혜택 |
