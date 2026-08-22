@@ -1,0 +1,39 @@
+AI 독서클럽 — 외부 CDN 의존 제거 패치
+=====================================
+
+■ 이 묶음에 들어 있는 것
+  vendor/react.production.min.js       (신규 추가 · React 공식 18.3.1)
+  vendor/react-dom.production.min.js   (신규 추가 · React 공식 18.3.1)
+  index.html                           (수정 · 3줄 추가)
+  about/index.html                     (수정 · 3줄 추가)
+  books/index.html                     (수정 · 3줄 추가)
+  program/index.html                   (수정 · 3줄 추가)
+  ai/index.html                        (수정 · 3줄 추가)
+  benefits/index.html                  (수정 · 3줄 추가)
+  writing-school/index.html            (수정 · 3줄 추가)
+  join/index.html                      (수정 · 3줄 추가)
+  변경사항.patch                        (개발자용 diff 파일 · 업로드 불필요)
+
+  ※ 삭제된 파일은 없습니다. 문구·이미지·기능 변경도 없습니다.
+
+■ GitHub 웹에서 업로드하는 방법
+  1) github.com/woodlaws/ai-bookclub 접속
+  2) 우측 상단 [Add file] → [Upload files]
+  3) 이 폴더 안의 vendor 폴더와 8개 index.html 을
+     폴더 구조 그대로 끌어다 놓기
+     (index.html 은 최상위, 나머지는 각자 원래 폴더 안)
+  4) 아래 커밋 메시지 입력 후 [Commit changes]
+
+     Self-host React to remove external CDN dependency
+
+  5) Vercel 이 자동 배포합니다 (1~2분)
+
+■ 무엇이 달라지나
+  전   unpkg.com(외국 서버)에서 React 를 받아야만 화면이 보임
+       → 그 서버가 막히면 홈페이지가 완전 백지
+  후   React 를 우리 저장소에 두고 먼저 읽음
+       → 외부 서버 요청 0건, 백지 사고 불가능, 로딩도 빨라짐
+
+■ 배포 후 확인
+  /  /about  /books  /program  /ai  /benefits  /writing-school  /join
+  8개 주소가 예전과 똑같이 보이면 정상입니다.
