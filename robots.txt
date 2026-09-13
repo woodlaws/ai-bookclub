@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-bookclub.vercel.app/sitemap.xml
+Sitemap: https://aibookclub.vercel.app/sitemap.xml

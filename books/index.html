@@ -10,17 +10,17 @@
 <meta property="og:site_name" content="임헌수의 AI 독서클럽" />
 <meta property="og:title" content="선정 도서 | 임헌수의 AI 독서클럽" />
 <meta property="og:description" content="매달 2권을 선정해 AI로 깊이 이해하고 사업에 적용하는 실행형 AI 독서클럽의 선정 도서." />
-<meta property="og:url" content="https://ai-bookclub.vercel.app/books" />
-<meta property="og:image" content="https://ai-bookclub.vercel.app/og-image.png" />
-<meta property="og:image:secure_url" content="https://ai-bookclub.vercel.app/og-image.png" />
+<meta property="og:url" content="https://aibookclub.vercel.app/books" />
+<meta property="og:image" content="https://aibookclub.vercel.app/og-image.png" />
+<meta property="og:image:secure_url" content="https://aibookclub.vercel.app/og-image.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="선정 도서 | 임헌수의 AI 독서클럽" />
 <meta name="twitter:description" content="매달 2권을 선정해 AI로 깊이 이해하고 사업에 적용하는 실행형 AI 독서클럽의 선정 도서." />
-<meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
-<link rel="canonical" href="https://ai-bookclub.vercel.app/books" />
+<meta name="twitter:image" content="https://aibookclub.vercel.app/og-image.png" />
+<link rel="canonical" href="https://aibookclub.vercel.app/books" />
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
@@ -36,21 +36,21 @@
 <meta name="description" content="임헌수의 AI 독서클럽은 매달 2권의 책을 선정해 AI로 깊이 이해하고, 액션플랜으로 만들어 실제 사업과 콘텐츠에 적용합니다." />
 <meta property="og:title" content="선정 도서 | 임헌수의 AI 독서클럽" />
 <meta property="og:description" content="자기계발서 1권과 실전 활용서 1권을 매달 함께 읽고, AI로 정리해 실제 사업에 적용하는 실행형 독서클럽입니다." />
-<meta property="og:url" content="https://ai-bookclub.vercel.app/books" />
+<meta property="og:url" content="https://aibookclub.vercel.app/books" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://ai-bookclub.vercel.app/og-image.png" />
-<meta property="og:image:secure_url" content="https://ai-bookclub.vercel.app/og-image.png" />
+<meta property="og:image" content="https://aibookclub.vercel.app/og-image.png" />
+<meta property="og:image:secure_url" content="https://aibookclub.vercel.app/og-image.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="선정 도서 | 임헌수의 AI 독서클럽" />
 <meta name="twitter:description" content="자기계발서 1권과 실전 활용서 1권을 매달 함께 읽고, AI로 정리해 실제 사업에 적용하는 실행형 독서클럽입니다." />
-<meta name="twitter:image" content="https://ai-bookclub.vercel.app/og-image.png" />
+<meta name="twitter:image" content="https://aibookclub.vercel.app/og-image.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
-<link rel="canonical" href="https://ai-bookclub.vercel.app/books" />
+<link rel="canonical" href="https://aibookclub.vercel.app/books" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -70,6 +70,8 @@ a:hover { color: #2563eb; }
   font-size: 11px; color: #6b7ab0; font-family: monospace; text-align: center; padding: 8px; border-radius: 6px;
 }
 .new-book-cover { object-fit: contain !important; background: #f7f8fc; }
+.book-card-link { display: block; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+.book-card-link:hover { color: inherit; transform: translateY(-4px); box-shadow: 0 14px 48px rgba(26,32,96,0.16) !important; }
 @media (max-width: 1080px) and (min-width: 769px) {
   /* 도서 카드: 태블릿 구간에서 1권씩 한 줄, 표지 폭 축소 */
   .books-grid { grid-template-columns: 1fr !important; }
@@ -110,6 +112,7 @@ a:hover { color: #2563eb; }
   /* 책 카드: 6월(grid cell=flex)·7월(inner flex) 모두 세로 전환 */
   .books-grid > div[style*="display: flex"] { flex-direction: column !important; }
   .books-grid > div > div[style*="display: flex; gap: 0"] { flex-direction: column !important; }
+  .books-grid > a > div[style*="display: flex; gap: 0"] { flex-direction: column !important; }
   /* 표지 컨테이너 */
   .books-grid [style*="flex-shrink: 0"] { width: 100% !important; padding: 20px 0 0 !important; display: flex !important; justify-content: center !important; align-items: flex-start !important; }
   /* 표지 이미지 크기 */
@@ -118,6 +121,7 @@ a:hover { color: #2563eb; }
   /* 텍스트 영역 패딩 복원 */
   .books-grid > div[style*="display: flex"] > div:last-child,
   .books-grid > div > div[style*="display: flex; gap: 0"] > div:last-child { padding: 20px 20px 24px !important; flex: unset !important; width: 100% !important; }
+  .books-grid > a > div[style*="display: flex; gap: 0"] > div:last-child { padding: 20px 20px 24px !important; flex: unset !important; width: 100% !important; }
 }
 @media (max-width: 480px) {
   .archive-grid { grid-template-columns: 1fr !important; }
@@ -296,8 +300,62 @@ a:hover { color: #2563eb; }
   </div>
 </section>
 
+<!-- UPCOMING BOOKS: OCTOBER 2026 -->
+<section id="october-2026" style="background: #fff; padding: 80px 48px;">
+  <div class="page-padding" style="max-width: 1340px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+      <span style="background: #e8eeff; color: #2563eb; border-radius: 20px; padding: 5px 16px; font-size: 16px; font-weight: 700; letter-spacing: 0.06em;">다음 달</span>
+      <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; text-transform: uppercase;">Upcoming Books</p>
+    </div>
+    <h2 style="font-size: clamp(33px, 4vw, 52px); font-weight: 900; color: #1a2060; line-height: 1.2; margin-bottom: 14px;">2026년 10월 선정 도서</h2>
+    <p style="font-size: 21px; color: #5a6490; line-height: 1.75; margin-bottom: 48px; max-width: 940px;"><strong style="color: #1a2060;">내 시간을 바꾸고, 내 사업의 다음 기회를 찾는 10월</strong><br/>『레버리지』로 일하는 방식을 돌아보고, 『트렌드 코리아 2027』로 고객과 시장의 변화를 준비합니다.</p>
+
+    <div class="books-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+      <a class="book-card-link" href="/books/leverage" aria-label="레버리지 상세페이지 보기" style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,32,96,0.1);">
+        <div style="display: flex; gap: 0;">
+          <div style="width: 200px; flex-shrink: 0; padding: 28px 0 28px 28px;">
+            <img class="new-book-cover" src="../uploads/9.레버리지.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: contain; background: #f7f8fc; border-radius: 8px; box-shadow: 4px 4px 20px rgba(26,32,96,0.15); display: block;" alt="레버리지 20만 부 기념 블랙 에디션 책 표지" />
+          </div>
+          <div style="padding: 28px 28px 28px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="background: #edf1fb; color: #2563eb; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">📖 나를 바꾸는 책</span>
+              <span style="background: #edf1fb; color: #2563eb; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">시간 · 강점 · 시스템</span>
+            </div>
+            <h3 style="font-size: 26px; font-weight: 900; color: #1a2060; line-height: 1.3;">레버리지</h3>
+            <p style="font-size: 15px; color: #6b7ab0; font-weight: 600;">20만 부 기념 블랙 에디션</p>
+            <p style="font-size: 17px; color: #6b7ab0; font-weight: 600;">롭 무어 · 김유미 옮김 · 다산북스</p>
+            <p style="font-size: 16px; color: #2563eb; font-weight: 700;">모임 일정 추후 안내</p>
+            <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">모든 일을 직접 처리하는 방식에서 벗어나, 나의 시간과 강점을 어디에 집중할지 돌아봅니다. 사람과 도구, 시스템을 활용해 일하는 방식을 재설계하는 독서입니다.</p>
+            <span style="font-size: 16px; color: #2563eb; font-weight: 800; margin-top: auto;">상세페이지 보기 →</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="book-card-link" href="/books/trend-korea-2027" aria-label="트렌드 코리아 2027 상세페이지 보기" style="background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 40px rgba(26,32,96,0.1);">
+        <div style="display: flex; gap: 0;">
+          <div style="width: 200px; flex-shrink: 0; padding: 28px 0 28px 28px;">
+            <img class="new-book-cover" src="../uploads/10.트렌드코리아2027.jpg" style="width: 100%; aspect-ratio: 2/3; object-fit: contain; background: #f7f8fc; border-radius: 8px; box-shadow: 4px 4px 20px rgba(26,32,96,0.15); display: block;" alt="트렌드 코리아 2027 책 표지" />
+          </div>
+          <div style="padding: 28px 28px 28px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="background: #fff5f0; color: #CC785C; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">🚀 사업을 바꾸는 책</span>
+              <span style="background: #fff5f0; color: #CC785C; border-radius: 20px; padding: 4px 12px; font-size: 16px; font-weight: 700;">고객 · 시장 · 사업 실험</span>
+            </div>
+            <h3 style="font-size: 26px; font-weight: 900; color: #1a2060; line-height: 1.3;">트렌드 코리아 2027</h3>
+            <p style="font-size: 15px; color: #6b7ab0; font-weight: 600;">2027 대한민국 소비트렌드 전망</p>
+            <p style="font-size: 17px; color: #6b7ab0; font-weight: 600;">김난도 외 · 미래의창</p>
+            <p style="font-size: 16px; color: #2563eb; font-weight: 700;">모임 일정 추후 안내</p>
+            <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">2027년 소비자의 변화를 살펴보고, 내 사업의 상품과 콘텐츠에 적용할 기회를 찾습니다. 트렌드를 읽은 뒤 실제로 실행할 작은 사업 실험까지 설계합니다.</p>
+            <span style="font-size: 16px; color: #2563eb; font-weight: 800; margin-top: auto;">상세페이지 보기 →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- PAST BOOKS: AUGUST 2026 -->
-<section id="august-2026" style="background: #fff; padding: 80px 48px;">
+<section id="august-2026" style="background: #edf1fb; padding: 80px 48px;">
   <div class="page-padding" style="max-width: 1340px; margin: 0 auto;">
     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
       <span style="background: #e8eeff; color: #6b7ab0; border-radius: 20px; padding: 5px 16px; font-size: 16px; font-weight: 700; letter-spacing: 0.06em;">지난 달</span>
@@ -552,6 +610,23 @@ a:hover { color: #2563eb; }
       <p style="font-size: 21px; color: #5a6490; line-height: 1.7;">매달 선정된 책은 이곳에 계속 쌓입니다.<br/>시간이 지날수록 AI 독서클럽의 지식 아카이브가 만들어집니다.</p>
     </div>
     <div class="archive-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <!-- October 2026 (upcoming) -->
+      <a href="#october-2026" style="background: #edf1fb; border: 2px solid #cbd8fb; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s;" style-hover="transform:translateY(-4px)">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <span style="font-size: 17px; font-weight: 700; color: #2563eb; letter-spacing: 0.06em;">2026년 10월</span>
+          <span style="background: #e8eeff; color: #2563eb; border-radius: 10px; padding: 3px 10px; font-size: 12px; font-weight: 700;">다음 달</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="../uploads/9.레버리지.jpg" style="width: 32px; height: 44px; object-fit: contain; background: #f7f8fc; border-radius: 4px; flex-shrink: 0; display: block;" alt="레버리지" />
+            <div><p style="font-size: 18px; font-weight: 700; color: #1a2060;">레버리지</p><p style="font-size: 16px; color: #6b7ab0;">시간 · 강점 · 시스템</p></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="../uploads/10.트렌드코리아2027.jpg" style="width: 32px; height: 44px; object-fit: contain; background: #f7f8fc; border-radius: 4px; flex-shrink: 0; display: block;" alt="트렌드 코리아 2027" />
+            <div><p style="font-size: 18px; font-weight: 700; color: #1a2060;">트렌드 코리아 2027</p><p style="font-size: 16px; color: #6b7ab0;">고객 · 시장 · 사업 실험</p></div>
+          </div>
+        </div>
+      </a>
       <!-- September 2026 (current) -->
       <a href="#current-books" style="background: #1a2060; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s;" style-hover="transform:translateY(-4px)">
         <div style="display: flex; align-items: center; justify-content: space-between;">

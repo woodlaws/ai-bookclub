@@ -8,7 +8,9 @@
 |---|---|---|
 | `/` | `index.html` | 홈 (메인 랜딩) |
 | `/about` | `about/index.html` | 클럽 소개 |
-| `/books` | `books/index.html` | 선정 도서 (2026년 9월 기준) |
+| `/books` | `books/index.html` | 선정 도서 (2026년 9월 현재 · 10월 도서 공개) |
+| `/books/leverage` | `books/leverage/index.html` | 2026년 10월 선정 도서 『레버리지』 |
+| `/books/trend-korea-2027` | `books/trend-korea-2027/index.html` | 2026년 10월 선정 도서 『트렌드 코리아 2027』 |
 | `/program` | `program/index.html` | 프로그램 |
 | `/ai` | `ai/index.html` | AI 활용 |
 | `/benefits` | `benefits/index.html` | 멤버 혜택 |
@@ -36,7 +38,7 @@
 
 ## 배포 후 확인할 주소
 
-`/` `/about` `/books` `/program` `/ai` `/benefits` `/writing-school` `/join`
+`/` `/about` `/books` `/books/leverage` `/books/trend-korea-2027` `/program` `/ai` `/benefits` `/writing-school` `/join`
 `/og-image.png` `/favicon.png` `/apple-touch-icon.png` `/robots.txt` `/sitemap.xml` `/llms.txt`
 
 ## 카카오톡 공유 미리보기
@@ -47,7 +49,7 @@ https://developers.kakao.com/tool/debugger/sharing
 
 ## 추후 수정 항목
 
-- **도메인 연결 시** — 각 페이지 `canonical`, `og:url`, `sitemap.xml`, `robots.txt`의 도메인을 실제 도메인으로 교체 (현재 `https://ai-bookclub.vercel.app` 기준)
+- **도메인 연결 시** — 각 페이지 `canonical`, `og:url`, `sitemap.xml`, `robots.txt`의 도메인을 새 도메인으로 교체 (현재 `https://aibookclub.vercel.app` 기준)
 - **책쓰기스쿨 지원 폼** — `writing-school/index.html`의 `/join` 링크를 전용 신청 폼 URL로 교체
 - **선정 도서 갱신** — `books/index.html`의 `#current-books` 섹션과 월별 아카이브 수정
 - 가입 신청 폼: `https://forms.gle/QDwMA7CM3oxFNQK37`
