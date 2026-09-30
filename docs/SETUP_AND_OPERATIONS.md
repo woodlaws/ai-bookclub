@@ -39,7 +39,10 @@ where p.id = u.id and lower(u.email) = lower('실제-관리자-이메일@example
 
 ## 5. 운영 방법
 
-- 공지 작성: 로그인 → 상단 **관리자** → 공지·일정 탭 → **글쓰기** → 공개 범위와 상단 고정 설정
+- 로그인 주소: `https://aibookclub.vercel.app/community/login`
+- 관리자 주소: `https://aibookclub.vercel.app/admin/community`
+- 공지 작성 주소: `https://aibookclub.vercel.app/community/notices?new=1`
+- 공지 작성: 로그인 → 공지·일정 → **새 공지 작성** → 제목·본문·공개 범위·상단 고정 설정 → **등록**
 - 자료 업로드: 자료실 → **글쓰기** → 자료 유형/공개 범위 선택 → 파일 또는 다시보기 URL 등록
 - 회원 승인: 관리자 화면 → **회원 승인** → 대상 이름 확인 → **회원 승인**. 해제 시 새 회원 파일 다운로드 URL 발급도 차단됩니다.
 - 후기 승인: 관리자 화면 → **후기 승인** → 내용을 확인 → **공개 승인**. 공개 동의 없는 후기는 승인되지 않습니다.
