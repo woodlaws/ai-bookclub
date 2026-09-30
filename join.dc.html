@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="naver-site-verification" content="d6bb19bc73e7eb1970b9c739e5875321d80ffdd7" />
 <!-- Static OG/Twitter for crawlers (JS not executed by bots) -->
-<title>가입 안내 | 임헌수의 AI 독서클럽</title>
+<title>가입 신청 및 안내 | 임헌수의 AI 독서클럽</title>
 <meta name="description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버 모집." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="임헌수의 AI 독서클럽" />
@@ -26,11 +26,13 @@
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <script src="./support.js"></script>
+<link rel="stylesheet" href="/join/form.css" />
+<script src="/join/form.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>가입 안내 | 임헌수의 AI 독서클럽</title>
+<title>가입 신청 및 안내 | 임헌수의 AI 독서클럽</title>
 <meta name="description" content="임헌수의 AI 독서클럽 가입 안내 페이지입니다. 매일 독서 인증, 월 2회 새벽 줌미팅, AI 액션플랜을 함께할 정예 멤버를 모집합니다." />
 <meta property="og:title" content="가입 안내 | 임헌수의 AI 독서클럽" />
 <meta property="og:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버를 모집합니다." />
@@ -125,7 +127,7 @@ a:hover { color: #2563eb; }
       <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
       <span style="width: 22px; height: 2px; background: #1a2060; border-radius: 2px; display: block;"></span>
     </button>
-    <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" class="nav-cta" style="flex-shrink: 0; background: #2563eb; color: #fff; border-radius: 8px; padding: 10px 22px; font-size: 18px; font-weight: 700; white-space: nowrap; margin-left: 24px;" style-hover="background:#1a2060">신청하기</a>
+    <a href="/join#application" class="nav-cta" style="flex-shrink: 0; background: #2563eb; color: #fff; border-radius: 8px; padding: 10px 22px; font-size: 18px; font-weight: 700; white-space: nowrap; margin-left: 24px;" style-hover="background:#1a2060">신청하기</a>
   </div>
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div class="page-padding" style="background: rgba(237,241,251,0.98); border-top: 1px solid rgba(26,32,96,0.08); padding-top: 16px; padding-bottom: 16px; display: flex; flex-direction: column;">
@@ -137,7 +139,7 @@ a:hover { color: #2563eb; }
       <a href="/benefits" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">멤버 혜택</a>
       <a href="/writing-school" style="padding: 14px 0; font-size: 20px; font-weight: 500; color: #2a3580; border-bottom: 1px solid rgba(26,32,96,0.06);">책쓰기스쿨</a>
       <a href="/join" style="padding: 14px 0; font-size: 20px; font-weight: 700; color: #1a2060; border-bottom: 1px solid rgba(26,32,96,0.06);">가입 안내</a>
-      <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="margin-top: 16px; background: #2563eb; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700; text-align: center;">신청하기</a>
+      <a href="/join#application" style="margin-top: 16px; background: #2563eb; color: #fff; border-radius: 8px; padding: 14px 24px; font-size: 20px; font-weight: 700; text-align: center;">신청하기</a>
     </div>
   </sc-if>
 </nav>
@@ -160,8 +162,76 @@ a:hover { color: #2563eb; }
       <span style="font-size: 18px; font-weight: 700; color: rgba(147,197,253,1);">✅ 운영진 검토 후 참여</span>
     </div>
     <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-      <a href="#apply" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기</a>
+      <a href="#application" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기</a>
       <a href="#recruit" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">모집 기준 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNAL APPLICATION FORM -->
+<section id="application" style="background: #edf1fb; padding: 64px 48px;">
+  <div class="application-wrap">
+    <div class="application-heading">
+      <p style="font-size: 15px; font-weight: 700; letter-spacing: .1em; color: #2563eb;">JOIN THE CLUB</p>
+      <h2 style="font-size: clamp(28px, 3.6vw, 44px); font-weight: 900; color: #1a2060; margin-top: 10px;">AI 독서클럽 가입 신청</h2>
+      <p>함께 읽고 실행하는 첫걸음, 여기에서 신청해 주세요.<br/>운영진이 신청 내용을 확인한 후 참여 방법을 안내드립니다.</p>
+    </div>
+    <div class="application-card">
+      <form id="club-application" action="/api/join" method="post">
+        <div class="application-grid">
+          <div class="application-field">
+            <label for="application-name">이름 <span>필수</span></label>
+            <input id="application-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="성함을 입력해 주세요" required />
+          </div>
+          <div class="application-field">
+            <label for="application-phone">휴대전화 <span>필수</span></label>
+            <input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="연락받으실 번호를 입력해 주세요" required />
+          </div>
+          <div class="application-field full">
+            <label for="application-email">이메일 <span>선택</span></label>
+            <input id="application-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="안내를 받을 이메일 주소" />
+          </div>
+          <div class="application-field full">
+            <label for="application-address">주소 또는 거주 지역 <span>선택</span></label>
+            <input id="application-address" name="address" type="text" autocomplete="address-level2" maxlength="300" placeholder="예: 서울시 강남구 · 상세 주소는 입력하지 않으셔도 됩니다" />
+          </div>
+          <div class="application-field full">
+            <label for="application-purpose">참여 목적 <span>선택</span></label>
+            <textarea id="application-purpose" name="purpose" maxlength="1200" rows="4" placeholder="독서 습관, AI 활용, 함께 실행하고 싶은 목표를 알려주세요"></textarea>
+          </div>
+        </div>
+        <div class="application-honeypot" aria-hidden="true">
+          <label for="application-website">Website</label>
+          <input id="application-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="application-consent" id="privacy-notice">
+          <details open>
+            <summary>개인정보 수집·이용 안내</summary>
+            <dl>
+              <dt>처리자</dt><dd>AI 독서클럽 운영진</dd>
+              <dt>수집 목적</dt><dd>가입 신청 접수, 신청 내용 확인 및 참여 안내</dd>
+              <dt>필수 항목</dt><dd>이름, 휴대전화, 개인정보 동의 여부 및 동의 일시</dd>
+              <dt>선택 항목</dt><dd>이메일, 주소 또는 거주 지역, 참여 목적</dd>
+              <dt>보유 기간</dt><dd>가입 신청 처리 및 참여 안내 완료 시까지 보유합니다. 가입 후 회원 관리에 필요한 정보는 별도 안내에 따릅니다.</dd>
+              <dt>동의 거부</dt><dd>동의를 거부할 수 있으며, 필수 항목의 수집·이용에 동의하지 않으면 홈페이지 신청 접수가 어렵습니다. 선택 항목은 입력하지 않아도 신청할 수 있습니다.</dd>
+            </dl>
+          </details>
+          <label class="application-check" for="application-consent">
+            <input id="application-consent" name="privacyConsent" type="checkbox" required />
+            <span>개인정보 수집·이용에 동의합니다. (필수)</span>
+          </label>
+        </div>
+        <button class="application-submit" type="submit" disabled>접수 상태 확인 중…</button>
+        <p class="application-help" style="text-align: center; margin-top: 12px;">신청 접수 후 운영진 확인을 거쳐 참여 안내를 드립니다.</p>
+      </form>
+      <div id="application-success" class="application-success" tabindex="-1" hidden>
+        <h3>신청이 접수되었습니다.</h3>
+        <p>함께 읽고 실행하는 첫걸음을 응원합니다.<br/>운영진이 확인 후 입력하신 연락처로 참여 안내를 드리겠습니다.</p>
+        <p style="margin-top: 18px; font-size: 14px;">접수번호<span data-receipt></span></p>
+        <a href="/books" style="display: inline-block; margin-top: 24px; color: #2563eb; font-weight: 700;">이번 달 선정 도서 보기 →</a>
+      </div>
+      <p id="application-status" class="application-status" role="status" aria-live="polite">신청 접수 상태를 확인하고 있습니다.</p>
+      <noscript><p>신청서를 이용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
     </div>
   </div>
 </section>
@@ -391,7 +461,7 @@ a:hover { color: #2563eb; }
       <div style="background: #fff; border-radius: 20px; padding: 32px 26px; text-align: center; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
         <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 16px;">1</div>
         <h3 style="font-size: 22px; font-weight: 800; color: #1a2060; margin-bottom: 10px;">신청서 작성</h3>
-        <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">아래 구글 폼 링크를 클릭해 신청 내용을 입력해 주세요.</p>
+        <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">이 페이지의 가입 신청서에 이름과 연락처를 입력해 주세요.</p>
       </div>
       <div style="background: #1a2060; border-radius: 20px; padding: 32px 26px; text-align: center;">
         <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 16px;">2</div>
@@ -410,7 +480,7 @@ a:hover { color: #2563eb; }
         <p style="font-size: 18px; font-weight: 700; color: #6b7ab0; margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase;">신청하기</p>
         <p style="font-size: 21px; font-weight: 800; color: #1a2060; margin-bottom: 6px; line-height: 1.4;">임헌수의 AI 독서클럽</p>
         <p style="font-size: 18px; color: #5a6490; margin-bottom: 24px; line-height: 1.6;">운영진 회의 후 함께할 수 있는 분에 한해 활동 안내를 드립니다.</p>
-        <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="display: block; background: #2563eb; color: #fff; border-radius: 12px; padding: 18px 0; font-size: 21px; font-weight: 700; text-align: center; box-shadow: 0 8px 24px rgba(37,99,235,0.35);" style-hover="background:#1a2060">신청서 작성하기 →</a>
+        <a href="/join#application" style="display: block; background: #2563eb; color: #fff; border-radius: 12px; padding: 18px 0; font-size: 21px; font-weight: 700; text-align: center; box-shadow: 0 8px 24px rgba(37,99,235,0.35);" style-hover="background:#1a2060">신청서 작성하기 →</a>
       </div>
     </div>
   </div>
@@ -459,7 +529,7 @@ a:hover { color: #2563eb; }
     <h2 style="font-size: clamp(30px, 4.5vw, 56px); font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 20px;">책을 읽고 끝내지 않고,<br/>실제 변화를 만들<br/>준비가 되셨나요?</h2>
     <p style="font-size: 21px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 44px;">혼자 읽기 힘든 시대, AI와 함께 더 깊이 읽고,<br/>검증된 멤버들과 함께 실행하며,<br/>나의 삶과 사업에 적용하는 독서 경험을 시작해 보세요.</p>
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="https://forms.gle/jWqa9LPLYZwmkYVx8" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 40px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기 →</a>
+      <a href="/join#application" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 40px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기 →</a>
       <a href="/program" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">프로그램 보기</a>
     </div>
   </div>

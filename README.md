@@ -15,7 +15,7 @@
 | `/ai` | `ai/index.html` | AI 활용 |
 | `/benefits` | `benefits/index.html` | 멤버 혜택 |
 | `/writing-school` | `writing-school/index.html` | 비즈니스 책쓰기 스쿨 |
-| `/join` | `join/index.html` | 가입 안내 |
+| `/join` | `join/index.html` | 내부 가입 신청서 및 가입 안내 |
 | `/community/notices` | `community/index.html` | 공지·일정 |
 | `/community/resources` | `community/index.html` | 자료실 |
 | `/community/records` | `community/index.html` | 독서·실천 기록 |
@@ -58,4 +58,4 @@ https://developers.kakao.com/tool/debugger/sharing
 - **대표 도메인** — `canonical`, `og:url`, 사이트맵, robots는 `https://aibookclub.kr` 기준
 - **책쓰기스쿨 지원 폼** — `writing-school/index.html`의 `/join` 링크를 전용 신청 폼 URL로 교체
 - **선정 도서 갱신** — `books/index.html`의 `#current-books` 섹션과 월별 아카이브 수정
-- 가입 신청 폼: `https://forms.gle/QDwMA7CM3oxFNQK37`
+- 가입 신청 폼: `/join#application` (연결 설정: `docs/REGISTRATION_SETUP.md`)

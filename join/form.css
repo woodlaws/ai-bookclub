@@ -1,0 +1,39 @@
+#application { scroll-margin-top: 84px; }
+.application-wrap { max-width: 920px; margin: 0 auto; }
+.application-heading { margin-bottom: 28px; text-align: center; }
+.application-heading p { font-size: 18px; color: #5a6490; line-height: 1.7; margin-top: 14px; }
+.application-card { padding: 40px; border: 1px solid #dce5fb; border-radius: 24px; background: #fff; box-shadow: 0 12px 40px rgba(26,32,96,.08); }
+.application-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.application-field { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.application-field.full { grid-column: 1 / -1; }
+.application-field label { font-size: 17px; font-weight: 700; color: #1a2060; }
+.application-field label span { font-size: 14px; font-weight: 500; color: #647095; margin-left: 6px; }
+.application-field input, .application-field textarea { width: 100%; padding: 14px 16px; border: 1px solid #cad5ec; border-radius: 10px; font: inherit; font-size: 17px; color: #182153; background: #fff; }
+.application-field textarea { resize: vertical; min-height: 120px; }
+.application-field input:focus, .application-field textarea:focus { outline: 3px solid #dce9ff; border-color: #2563eb; }
+.application-help { font-size: 14px; line-height: 1.6; color: #667293; }
+.application-consent { margin-top: 28px; padding: 20px; border-radius: 12px; background: #f4f7fd; }
+.application-consent summary { font-size: 16px; font-weight: 700; cursor: pointer; }
+.application-consent dl { margin: 16px 0; display: grid; grid-template-columns: 100px 1fr; gap: 10px 12px; font-size: 14px; line-height: 1.65; }
+.application-consent dt { font-weight: 700; }
+.application-consent dd { margin: 0; color: #4d5b80; }
+.application-check { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; font-weight: 600; line-height: 1.6; cursor: pointer; }
+.application-check input { width: 20px; height: 20px; margin-top: 3px; flex-shrink: 0; accent-color: #2563eb; }
+.application-submit { margin-top: 24px; width: 100%; min-height: 56px; padding: 16px; border: 0; border-radius: 12px; background: #2563eb; color: #fff; font: inherit; font-size: 19px; font-weight: 700; cursor: pointer; }
+.application-submit:hover { background: #1d4ed8; }
+.application-submit:disabled { background: #64739a; cursor: not-allowed; }
+.application-status { margin-top: 20px; padding: 14px 18px; border-radius: 10px; background: #edf3ff; color: #344774; font-size: 16px; line-height: 1.65; }
+.application-status[data-state="error"] { color: #9f2424; background: #fff0f0; }
+.application-status[data-state="success"] { color: #166534; background: #ecfdf5; }
+.application-success { padding: 24px; text-align: center; line-height: 1.8; }
+.application-success h3 { font-size: 26px; margin-bottom: 12px; }
+.application-success [data-receipt] { display: block; font-size: 13px; overflow-wrap: anywhere; margin-top: 6px; color: #5a6490; }
+.application-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+#application [hidden] { display: none !important; }
+@media (max-width: 768px) {
+  .application-card { padding: 24px 18px; border-radius: 18px; }
+  .application-grid { grid-template-columns: 1fr; gap: 20px; }
+  .application-consent { padding: 16px; }
+  .application-consent dl { grid-template-columns: 1fr; gap: 4px; }
+  .application-consent dd { margin-bottom: 8px; }
+}
