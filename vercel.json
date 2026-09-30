@@ -1,6 +1,7 @@
 {
   "trailingSlash": false,
   "redirects": [
+    { "source": "/community", "destination": "/community/notices", "permanent": false },
     { "source": "/home.dc.html", "destination": "/", "permanent": true },
     { "source": "/about.dc.html", "destination": "/about", "permanent": true },
     { "source": "/books.dc.html", "destination": "/books", "permanent": true },
@@ -11,7 +12,27 @@
     { "source": "/join.dc.html", "destination": "/join", "permanent": true },
     { "source": "/writing-school.dc.html", "destination": "/writing-school", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/community/:path*", "destination": "/community/index.html" },
+    { "source": "/admin/community", "destination": "/community/index.html" }
+  ],
   "headers": [
+    {
+      "source": "/community/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/admin/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "private, no-store" },
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
     {
       "source": "/og-image.png",
       "headers": [

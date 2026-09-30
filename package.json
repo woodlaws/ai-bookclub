@@ -1,0 +1,11 @@
+{
+  "name": "ai-bookclub-community",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "check": "node --check community/community.js && node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

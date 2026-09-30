@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /community/records
+Disallow: /community/inquiries
 
 Sitemap: https://aibookclub.vercel.app/sitemap.xml

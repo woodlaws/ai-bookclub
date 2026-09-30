@@ -1766,3 +1766,27 @@
     throw err;
   });
 })();
+
+// Existing pages share this runtime rather than a common header template.
+// Add the community entry after the rendered header is available so every
+// current page keeps its original markup and styling.
+(() => {
+  const addCommunityLinks = () => {
+    document.querySelectorAll('nav a[href="/join"]').forEach((joinLink) => {
+      const parent = joinLink.parentElement;
+      if (!parent || parent.querySelector('a[href="/community/notices"]')) return;
+      const link = document.createElement('a');
+      link.href = '/community/notices';
+      link.textContent = '클럽 게시판';
+      link.setAttribute('style-hover', 'color:#2563eb');
+      if (joinLink.getAttribute('style')) link.setAttribute('style', joinLink.getAttribute('style'));
+      parent.insertBefore(link, joinLink);
+    });
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    addCommunityLinks();
+    const observer = new MutationObserver(addCommunityLinks);
+    observer.observe(document.body, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), 5000);
+  });
+})();

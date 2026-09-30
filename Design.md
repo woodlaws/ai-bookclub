@@ -1,0 +1,31 @@
+# 게시판 설계
+
+## 화면
+
+- 기존 브랜드 색상(`#1a2060`, `#2563eb`), Noto Sans KR, 최대 1120px 콘텐츠 폭을 유지한다.
+- 상단 탭은 모바일에서 가로 스크롤되며 페이지 전체는 넘치지 않는다.
+- 연결 전, 로딩, 빈 목록, 로그인 필요, 승인 대기, 권한 없음, 저장 실패를 서로 다른 문구로 보여 준다.
+- DB 본문은 `textContent`로만 출력해 저장된 스크립트가 실행되지 않게 한다.
+
+## 데이터 경계
+
+- `community_posts`: 관리자 작성 공지/자료. `visibility`로 공개/회원 분리.
+- `reading_records`, `record_comments`: 승인 회원 전용.
+- `community_reviews`: 공개 동의와 관리자 승인 모두 충족해야 공개.
+- `inquiries`, `inquiry_replies`: 작성자와 관리자만 접근하는 별도 테이블.
+- `profiles`: 표시 이름, 회원 승인, 관리자 권한. 보호 컬럼 변경은 관리자 RPC만 허용.
+- `attachments`: 대상 종류/ID와 Storage 경로를 연결. 실제 객체는 `community-private` 비공개 버킷에 저장.
+
+## 보안
+
+- 노출 테이블 전부 RLS 적용, `anon`/`authenticated` GRANT를 필요한 작업과 컬럼으로 제한한다.
+- UPDATE 정책은 기존 행(`USING`)과 결과 행(`WITH CHECK`)을 모두 검증한다.
+- 공개 클라이언트에는 publishable key만 전달한다.
+- 서명 URL은 권한 검사 후 60초 동안만 발급한다.
+- 첨부파일은 허용 확장자와 MIME을 함께 검사하며 파일당 20MB, 글당 5개다.
+- 후기 본문/제목/표시 이름 수정 또는 공개 동의 철회 시 승인을 초기화한다.
+- 비공개 화면은 `noindex,nofollow`; 사이트맵에는 공개 게시판 주소만 둔다.
+
+## 제약
+
+현재 저장소는 정적 HTML 사이트다. `/api/config` Vercel Function이 환경변수의 공개 가능한 Supabase 연결값만 브라우저에 전달하고, 데이터 권한은 Supabase RLS가 강제한다. 동적 게시글별 SEO 메타/사이트맵은 별도 서버 렌더링 없이 생성하지 않는다.

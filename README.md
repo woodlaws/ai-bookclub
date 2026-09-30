@@ -1,6 +1,6 @@
 # 임헌수의 AI 독서클럽 — 다페이지 홈페이지
 
-정적 HTML 사이트 (빌드 불필요). Vercel에 그대로 배포됩니다.
+정적 HTML 사이트에 Supabase 운영 게시판과 Vercel 공개 설정 API를 추가했습니다.
 
 ## 페이지 구조
 
@@ -16,6 +16,12 @@
 | `/benefits` | `benefits/index.html` | 멤버 혜택 |
 | `/writing-school` | `writing-school/index.html` | 비즈니스 책쓰기 스쿨 |
 | `/join` | `join/index.html` | 가입 안내 |
+| `/community/notices` | `community/index.html` | 공지·일정 |
+| `/community/resources` | `community/index.html` | 자료실 |
+| `/community/records` | `community/index.html` | 독서·실천 기록 |
+| `/community/reviews` | `community/index.html` | 참여 후기 |
+| `/community/inquiries` | `community/index.html` | 1:1 문의 |
+| `/admin/community` | `community/index.html` | 관리자 화면 |
 
 폴더형 `index.html` 구조라 Vercel에서 별도 rewrite 없이 clean URL이 그대로 동작합니다. 구 `.dc.html` 주소는 `vercel.json`의 301 리다이렉트로 처리됩니다.
 
@@ -34,7 +40,7 @@
 - Install Command: (비워둠)
 - Build Command: (비워둠)
 - Output Directory: (비워둠)
-- Environment Variables: **필요 없음**
+- Environment Variables: `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` (자세한 순서는 `docs/SETUP_AND_OPERATIONS.md`)
 
 ## 배포 후 확인할 주소
 
