@@ -181,11 +181,11 @@ a:hover { color: #2563eb; }
         <div class="application-grid">
           <div class="application-field">
             <label for="application-name">이름 <span>필수</span></label>
-            <input id="application-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="성함을 입력해 주세요" required />
+            <input id="application-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="성함을 입력해 주세요" required="required" />
           </div>
           <div class="application-field">
             <label for="application-phone">휴대전화 <span>필수</span></label>
-            <input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="연락받으실 번호를 입력해 주세요" required />
+            <input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="연락받으실 번호를 입력해 주세요" required="required" />
           </div>
           <div class="application-field full">
             <label for="application-email">이메일 <span>선택</span></label>
@@ -205,7 +205,7 @@ a:hover { color: #2563eb; }
           <input id="application-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <div class="application-consent" id="privacy-notice">
-          <details open>
+          <details open="open">
             <summary>개인정보 수집·이용 안내</summary>
             <dl>
               <dt>처리자</dt><dd>AI 독서클럽 운영진</dd>
@@ -217,14 +217,14 @@ a:hover { color: #2563eb; }
             </dl>
           </details>
           <label class="application-check" for="application-consent">
-            <input id="application-consent" name="privacyConsent" type="checkbox" required />
+            <input id="application-consent" name="privacyConsent" type="checkbox" required="required" />
             <span>개인정보 수집·이용에 동의합니다. (필수)</span>
           </label>
         </div>
-        <button class="application-submit" type="submit" disabled>접수 상태 확인 중…</button>
+        <button class="application-submit" type="submit" disabled="disabled">접수 상태 확인 중…</button>
         <p class="application-help" style="text-align: center; margin-top: 12px;">신청 접수 후 운영진 확인을 거쳐 참여 안내를 드립니다.</p>
       </form>
-      <div id="application-success" class="application-success" tabindex="-1" hidden>
+      <div id="application-success" class="application-success" tabindex="-1" hidden="hidden">
         <h3>신청이 접수되었습니다.</h3>
         <p>함께 읽고 실행하는 첫걸음을 응원합니다.<br/>운영진이 확인 후 입력하신 연락처로 참여 안내를 드리겠습니다.</p>
         <p style="margin-top: 18px; font-size: 14px;">접수번호<span data-receipt></span></p>
