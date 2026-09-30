@@ -55,7 +55,7 @@ https://developers.kakao.com/tool/debugger/sharing
 
 ## 추후 수정 항목
 
-- **도메인 연결 시** — 각 페이지 `canonical`, `og:url`, `sitemap.xml`, `robots.txt`의 도메인을 새 도메인으로 교체 (현재 `https://aibookclub.vercel.app` 기준)
+- **대표 도메인** — `canonical`, `og:url`, 사이트맵, robots는 `https://aibookclub.kr` 기준
 - **책쓰기스쿨 지원 폼** — `writing-school/index.html`의 `/join` 링크를 전용 신청 폼 URL로 교체
 - **선정 도서 갱신** — `books/index.html`의 `#current-books` 섹션과 월별 아카이브 수정
 - 가입 신청 폼: `https://forms.gle/QDwMA7CM3oxFNQK37`

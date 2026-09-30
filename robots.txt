@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /community/records
 Disallow: /community/inquiries
 
-Sitemap: https://aibookclub.vercel.app/sitemap.xml
+Sitemap: https://aibookclub.kr/sitemap.xml

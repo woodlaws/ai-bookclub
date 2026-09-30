@@ -20,8 +20,8 @@ secret key 또는 legacy `service_role` 키는 등록하거나 브라우저/대�
 
 1. Supabase → Authentication → Sign In / Providers → Email에서 이메일 로그인을 켭니다.
 2. Email OTP가 코드 방식이 되도록 Magic Link 템플릿을 `{{ .Token }}`을 포함한 한국어 안내로 설정합니다.
-3. URL Configuration의 Site URL을 `https://aibookclub.vercel.app`으로 설정합니다.
-4. Redirect URLs에 `https://aibookclub.vercel.app/**`와 필요한 Preview URL만 등록합니다.
+3. URL Configuration의 Site URL을 `https://aibookclub.kr`로 설정합니다.
+4. Redirect URLs에 `https://aibookclub.kr/**`와 필요한 Preview URL만 등록합니다.
 5. 운영 도메인 발신자/SMTP를 설정하고 외부 이메일에서 실제 수신, 만료, 재전송을 확인합니다.
 
 ## 4. 최초 관리자 지정
@@ -39,9 +39,9 @@ where p.id = u.id and lower(u.email) = lower('실제-관리자-이메일@example
 
 ## 5. 운영 방법
 
-- 로그인 주소: `https://aibookclub.vercel.app/community/login`
-- 관리자 주소: `https://aibookclub.vercel.app/admin/community`
-- 공지 작성 주소: `https://aibookclub.vercel.app/community/notices?new=1`
+- 로그인 주소: `https://aibookclub.kr/community/login`
+- 관리자 주소: `https://aibookclub.kr/admin/community`
+- 공지 작성 주소: `https://aibookclub.kr/community/notices?new=1`
 - 공지 작성: 로그인 → 공지·일정 → **새 공지 작성** → 제목·본문·공개 범위·상단 고정 설정 → **등록**
 - 자료 업로드: 자료실 → **글쓰기** → 자료 유형/공개 범위 선택 → 파일 또는 다시보기 URL 등록
 - 회원 승인: 관리자 화면 → **회원 승인** → 대상 이름 확인 → **회원 승인**. 해제 시 새 회원 파일 다운로드 URL 발급도 차단됩니다.

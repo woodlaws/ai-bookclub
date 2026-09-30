@@ -1,4 +1,4 @@
-const SITE_URL='https://aibookclub.vercel.app';
+const SITE_URL='https://aibookclub.kr';
 const xmlEscape=(value)=>String(value).replace(/[<>&'\"]/g,(char)=>({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[char]));
 
 export default async function handler(_request,response){
