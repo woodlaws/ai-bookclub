@@ -48,5 +48,6 @@ test('동적 게시판 대표 URL도 새 도메인을 사용한다', () => {
   const dynamicSitemap = readFileSync(join(root, 'api', 'community-sitemap.js'), 'utf8');
   assert.match(community, /https:\/\/aibookclub\.kr\/community\//);
   assert.match(dynamicSitemap, /SITE_URL='https:\/\/aibookclub\.kr'/);
+  assert.doesNotMatch(dynamicSitemap, /status\(503\)/);
   assert.doesNotMatch(`${community}${dynamicSitemap}`, /\.vercel\.app/);
 });
