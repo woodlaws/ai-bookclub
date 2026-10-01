@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="naver-site-verification" content="d6bb19bc73e7eb1970b9c739e5875321d80ffdd7" />
 <!-- Static OG/Twitter for crawlers (JS not executed by bots) -->
-<title>가입 신청 및 안내 | 임헌수의 AI 독서클럽</title>
+<title>가입 안내 | 임헌수의 AI 독서클럽</title>
 <meta name="description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버 모집." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="임헌수의 AI 독서클럽" />
@@ -29,13 +29,12 @@
 <script src="../vendor/react.production.min.js"></script>
 <script src="../vendor/react-dom.production.min.js"></script>
 <script src="../support.js"></script>
-<link rel="stylesheet" href="/join/form.css" />
-<script src="/join/form.js" defer></script>
+<script src="./join-form.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>가입 신청 및 안내 | 임헌수의 AI 독서클럽</title>
+<title>가입 안내 | 임헌수의 AI 독서클럽</title>
 <meta name="description" content="임헌수의 AI 독서클럽 가입 안내 페이지입니다. 매일 독서 인증, 월 2회 새벽 줌미팅, AI 액션플랜을 함께할 정예 멤버를 모집합니다." />
 <meta property="og:title" content="가입 안내 | 임헌수의 AI 독서클럽" />
 <meta property="og:description" content="매일 인증과 월 2회 새벽 줌미팅, AI 액션플랜으로 책을 실제 변화로 연결할 정예 멤버를 모집합니다." />
@@ -66,6 +65,25 @@ a:hover { color: #2563eb; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item[open] summary { color: #2563eb; }
 .faq-answer { font-size: 18px; color: #4a5490; line-height: 1.8; padding-bottom: 20px; }
+.application-card { background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 8px 36px rgba(26,32,96,0.10); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.form-field { display: flex; flex-direction: column; gap: 8px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label, .consent-title { font-size: 17px; font-weight: 800; color: #1a2060; }
+.required { color: #dc2626; }
+.form-field input, .form-field select { width: 100%; border: 1.5px solid #c8d4f0; border-radius: 10px; padding: 14px 15px; font: inherit; font-size: 17px; color: #1a2060; background: #fff; }
+.form-field input:focus, .form-field select:focus { outline: 3px solid rgba(37,99,235,.18); border-color: #2563eb; }
+.field-error { min-height: 20px; color: #b91c1c; font-size: 14px; }
+.privacy-notice { background: #f5f7ff; border: 1px solid #dbe4ff; border-radius: 14px; padding: 20px; color: #4a5490; font-size: 15px; line-height: 1.75; }
+.privacy-notice strong { color: #1a2060; }
+.check-row { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.55; color: #2a3580; }
+.check-row input { width: 20px; height: 20px; margin-top: 2px; flex: 0 0 auto; accent-color: #2563eb; }
+.submit-button { width: 100%; border: 0; border-radius: 12px; padding: 17px 24px; background: #2563eb; color: #fff; font: inherit; font-size: 20px; font-weight: 800; cursor: pointer; }
+.submit-button:disabled { background: #9aa7c8; cursor: not-allowed; }
+.form-status { margin-top: 14px; min-height: 26px; text-align: center; font-size: 16px; font-weight: 700; color: #4a5490; }
+.form-status.success { color: #047857; }
+.form-status.error { color: #b91c1c; }
+.honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 @media (max-width: 1120px) and (min-width: 769px) {
   .nav-desktop { gap: 13px !important; font-size: 16px !important; margin-left: 14px !important; }
   .nav-cta { display: none !important; }
@@ -86,6 +104,9 @@ a:hover { color: #2563eb; }
   .steps-grid { grid-template-columns: 1fr !important; }
   .cost-grid { grid-template-columns: 1fr !important; }
   .faq-item summary { font-size: 17px !important; }
+  .application-card { padding: 24px 18px; border-radius: 18px; }
+  .form-grid { grid-template-columns: 1fr; gap: 16px; }
+  .form-field.full { grid-column: auto; }
   footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
   /* 공통: 그리드 셀 overflow 방지 */
   [style*="grid-template-columns"] > * { min-width: 0; overflow-wrap: anywhere; }
@@ -167,74 +188,6 @@ a:hover { color: #2563eb; }
     <div style="display: flex; gap: 14px; flex-wrap: wrap;">
       <a href="#application" style="display: inline-flex; align-items: center; gap: 8px; background: #2563eb; color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700; box-shadow: 0 8px 32px rgba(37,99,235,0.5);" style-hover="background:#3b72f0">신청서 작성하기</a>
       <a href="#recruit" style="display: inline-flex; align-items: center; gap: 8px; border: 2px solid rgba(255,255,255,0.3); color: #fff; border-radius: 10px; padding: 18px 36px; font-size: 21px; font-weight: 700;" style-hover="border-color:rgba(255,255,255,0.7)">모집 기준 보기</a>
-    </div>
-  </div>
-</section>
-
-<!-- INTERNAL APPLICATION FORM -->
-<section id="application" style="background: #edf1fb; padding: 64px 48px;">
-  <div class="application-wrap">
-    <div class="application-heading">
-      <p style="font-size: 15px; font-weight: 700; letter-spacing: .1em; color: #2563eb;">JOIN THE CLUB</p>
-      <h2 style="font-size: clamp(28px, 3.6vw, 44px); font-weight: 900; color: #1a2060; margin-top: 10px;">AI 독서클럽 가입 신청</h2>
-      <p>함께 읽고 실행하는 첫걸음, 여기에서 신청해 주세요.<br/>운영진이 신청 내용을 확인한 후 참여 방법을 안내드립니다.</p>
-    </div>
-    <div class="application-card">
-      <form id="club-application" action="/api/join" method="post">
-        <div class="application-grid">
-          <div class="application-field">
-            <label for="application-name">이름 <span>필수</span></label>
-            <input id="application-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="성함을 입력해 주세요" required="required" />
-          </div>
-          <div class="application-field">
-            <label for="application-phone">휴대전화 <span>필수</span></label>
-            <input id="application-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="연락받으실 번호를 입력해 주세요" required="required" />
-          </div>
-          <div class="application-field full">
-            <label for="application-email">이메일 <span>선택</span></label>
-            <input id="application-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="안내를 받을 이메일 주소" />
-          </div>
-          <div class="application-field full">
-            <label for="application-address">주소 또는 거주 지역 <span>선택</span></label>
-            <input id="application-address" name="address" type="text" autocomplete="address-level2" maxlength="300" placeholder="예: 서울시 강남구 · 상세 주소는 입력하지 않으셔도 됩니다" />
-          </div>
-          <div class="application-field full">
-            <label for="application-purpose">참여 목적 <span>선택</span></label>
-            <textarea id="application-purpose" name="purpose" maxlength="1200" rows="4" placeholder="독서 습관, AI 활용, 함께 실행하고 싶은 목표를 알려주세요"></textarea>
-          </div>
-        </div>
-        <div class="application-honeypot" aria-hidden="true">
-          <label for="application-website">Website</label>
-          <input id="application-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-        </div>
-        <div class="application-consent" id="privacy-notice">
-          <details open="open">
-            <summary>개인정보 수집·이용 안내</summary>
-            <dl>
-              <dt>처리자</dt><dd>AI 독서클럽 운영진</dd>
-              <dt>수집 목적</dt><dd>가입 신청 접수, 신청 내용 확인 및 참여 안내</dd>
-              <dt>필수 항목</dt><dd>이름, 휴대전화, 개인정보 동의 여부 및 동의 일시</dd>
-              <dt>선택 항목</dt><dd>이메일, 주소 또는 거주 지역, 참여 목적</dd>
-              <dt>보유 기간</dt><dd>가입 신청 처리 및 참여 안내 완료 시까지 보유합니다. 가입 후 회원 관리에 필요한 정보는 별도 안내에 따릅니다.</dd>
-              <dt>동의 거부</dt><dd>동의를 거부할 수 있으며, 필수 항목의 수집·이용에 동의하지 않으면 홈페이지 신청 접수가 어렵습니다. 선택 항목은 입력하지 않아도 신청할 수 있습니다.</dd>
-            </dl>
-          </details>
-          <label class="application-check" for="application-consent">
-            <input id="application-consent" name="privacyConsent" type="checkbox" required="required" />
-            <span>개인정보 수집·이용에 동의합니다. (필수)</span>
-          </label>
-        </div>
-        <button class="application-submit" type="submit" disabled="disabled">접수 상태 확인 중…</button>
-        <p class="application-help" style="text-align: center; margin-top: 12px;">신청 접수 후 운영진 확인을 거쳐 참여 안내를 드립니다.</p>
-      </form>
-      <div id="application-success" class="application-success" tabindex="-1" hidden="hidden">
-        <h3>신청이 접수되었습니다.</h3>
-        <p>함께 읽고 실행하는 첫걸음을 응원합니다.<br/>운영진이 확인 후 입력하신 연락처로 참여 안내를 드리겠습니다.</p>
-        <p style="margin-top: 18px; font-size: 14px;">접수번호<span data-receipt></span></p>
-        <a href="/books" style="display: inline-block; margin-top: 24px; color: #2563eb; font-weight: 700;">이번 달 선정 도서 보기 →</a>
-      </div>
-      <p id="application-status" class="application-status" role="status" aria-live="polite">신청 접수 상태를 확인하고 있습니다.</p>
-      <noscript><p>신청서를 이용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
     </div>
   </div>
 </section>
@@ -452,39 +405,59 @@ a:hover { color: #2563eb; }
   </div>
 </section>
 
-<!-- HOW TO APPLY -->
-<section id="apply" style="background: #edf1fb; padding: 80px 48px;">
+<!-- APPLICATION -->
+<section id="application" style="background: #edf1fb; padding: 80px 48px; scroll-margin-top: 80px;">
   <div class="page-padding" style="max-width: 1000px; margin: 0 auto;">
     <div style="text-align: center; margin-bottom: 52px;">
       <p style="font-size: 17px; font-weight: 700; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 12px; text-transform: uppercase;">How to Apply</p>
-      <h2 style="font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">신청 방법</h2>
-      <p style="font-size: 21px; color: #5a6490; line-height: 1.75;">아래 신청서를 작성해 주시면 운영진 검토 후 참여 안내를 드립니다.</p>
+      <h2 style="font-size: clamp(30px, 4vw, 50px); font-weight: 900; color: #1a2060; line-height: 1.25; margin-bottom: 14px;">독서클럽 신청서</h2>
+      <p style="font-size: 21px; color: #5a6490; line-height: 1.75;">홈페이지에서 바로 신청해 주세요. 운영진 검토 후 참여 안내를 드립니다.</p>
     </div>
-    <div class="steps-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
-      <div style="background: #fff; border-radius: 20px; padding: 32px 26px; text-align: center; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
-        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 16px;">1</div>
-        <h3 style="font-size: 22px; font-weight: 800; color: #1a2060; margin-bottom: 10px;">신청서 작성</h3>
-        <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">이 페이지의 가입 신청서에 이름과 연락처를 입력해 주세요.</p>
-      </div>
-      <div style="background: #1a2060; border-radius: 20px; padding: 32px 26px; text-align: center;">
-        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 16px;">2</div>
-        <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px;">운영진 검토</h3>
-        <p style="font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.7;">신청 내용을 바탕으로 운영진이 함께 검토하고 클럽 방향에 맞는 분인지 확인합니다.</p>
-      </div>
-      <div style="background: #fff; border-radius: 20px; padding: 32px 26px; text-align: center; box-shadow: 0 2px 16px rgba(26,32,96,0.07);">
-        <div style="width: 56px; height: 56px; background: #2563eb; color: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin: 0 auto 16px;">3</div>
-        <h3 style="font-size: 22px; font-weight: 800; color: #1a2060; margin-bottom: 10px;">합격자 활동 안내</h3>
-        <p style="font-size: 18px; color: #5a6490; line-height: 1.7;">함께할 수 있는 분에 한해 단톡방 참여, 선정 도서, 줌미팅 일정을 안내드립니다.</p>
-      </div>
-    </div>
-    <!-- CTA Apply Button -->
-    <div style="text-align: center;">
-      <div style="background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 4px 24px rgba(26,32,96,0.1); display: inline-block; max-width: 480px; width: 100%;">
-        <p style="font-size: 18px; font-weight: 700; color: #6b7ab0; margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase;">신청하기</p>
-        <p style="font-size: 21px; font-weight: 800; color: #1a2060; margin-bottom: 6px; line-height: 1.4;">임헌수의 AI 독서클럽</p>
-        <p style="font-size: 18px; color: #5a6490; margin-bottom: 24px; line-height: 1.6;">운영진 회의 후 함께할 수 있는 분에 한해 활동 안내를 드립니다.</p>
-        <a href="/join#application" style="display: block; background: #2563eb; color: #fff; border-radius: 12px; padding: 18px 0; font-size: 21px; font-weight: 700; text-align: center; box-shadow: 0 8px 24px rgba(37,99,235,0.35);" style-hover="background:#1a2060">신청서 작성하기 →</a>
-      </div>
+    <div class="application-card">
+      <form id="join-form" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="join-name">이름 <span class="required">*</span></label>
+            <input id="join-name" name="name" type="text" autocomplete="name" maxlength="40" required />
+            <span class="field-error" id="name-error"></span>
+          </div>
+          <div class="form-field">
+            <label for="join-phone">휴대전화 <span class="required">*</span></label>
+            <input id="join-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="010-1234-5678" required />
+            <span class="field-error" id="phone-error"></span>
+          </div>
+          <div class="form-field">
+            <label for="join-email">이메일 <span style="font-weight:500;color:#6b7ab0;">(선택)</span></label>
+            <input id="join-email" name="email" type="email" autocomplete="email" maxlength="120" />
+            <span class="field-error" id="email-error"></span>
+          </div>
+          <div class="form-field">
+            <label for="join-interest">관심 분야 <span style="font-weight:500;color:#6b7ab0;">(선택)</span></label>
+            <select id="join-interest" name="interest">
+              <option value="">선택하지 않음</option><option>AI 활용</option><option>독서 습관</option><option>글쓰기</option><option>비즈니스 활용</option><option>기타</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+          <div class="form-field full privacy-notice" id="privacy-notice">
+            <p class="consent-title">개인정보 수집·이용 안내</p>
+            <p><strong>수집 목적:</strong> 독서클럽 신청 접수, 참여 검토 및 결과 안내</p>
+            <p><strong>수집 항목:</strong> 이름, 휴대전화(필수), 이메일·관심 분야(입력 시)</p>
+            <p><strong>운영자:</strong> <span id="privacy-operator">설정 필요</span></p>
+            <p><strong>보유 기간:</strong> <span id="privacy-retention">설정 필요</span></p>
+            <p><strong>선택 동의 안내:</strong> 소식 수신에 동의하면 입력한 연락처를 독서클럽 및 강의 소식 안내에 이용합니다. 선택 동의를 하지 않아도 신청할 수 있습니다.</p>
+          </div>
+          <div class="form-field full">
+            <label class="check-row"><input id="join-privacy" name="privacyConsent" type="checkbox" required /> <span><strong>[필수]</strong> 위 개인정보 수집·이용에 동의합니다.</span></label>
+            <span class="field-error" id="privacy-error"></span>
+            <label class="check-row"><input id="join-news" name="newsConsent" type="checkbox" /> <span><strong>[선택]</strong> 독서클럽 및 강의 소식 수신에 동의합니다.</span></label>
+          </div>
+          <div class="honeypot" aria-hidden="true"><label for="join-website">웹사이트</label><input id="join-website" name="website" tabindex="-1" autocomplete="off" /></div>
+          <div class="form-field full">
+            <button id="join-submit" class="submit-button" type="submit" disabled>독서클럽 신청하기</button>
+            <p id="join-status" class="form-status" role="status" aria-live="polite">온라인 신청 접수 준비 중입니다.</p>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>
