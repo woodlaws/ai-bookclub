@@ -1,6 +1,7 @@
 {
   "name": "ai-bookclub-community",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "check": "node --check community/community.js && node --check join/join-form.js && node --check api/join.js && node --check api/join-config.js && node --test tests/*.test.mjs"
