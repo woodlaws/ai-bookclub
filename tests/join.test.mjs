@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { forwardToAppsScript, getJoinConfig, normalizePhone, validateJoinPayload } from '../api/join-core.mjs';
+import core from '../api/join-core.cjs';
+const { forwardToAppsScript, getJoinConfig, normalizePhone, validateJoinPayload } = core;
 
 const validPayload = (overrides = {}) => ({
   applicationId: 'JOIN-550e8400-e29b-41d4-a716-446655440000',

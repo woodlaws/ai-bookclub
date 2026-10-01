@@ -1,7 +1,7 @@
 const INTERESTS = new Set(['', 'AI 활용', '독서 습관', '글쓰기', '비즈니스 활용', '기타']);
 const APPLICATION_ID_PATTERN = /^JOIN-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-export function getJoinConfig(env = process.env) {
+function getJoinConfig(env = process.env) {
   const operatorName = (env.JOIN_PRIVACY_OPERATOR_NAME || '').trim();
   const retentionPeriod = (env.JOIN_PRIVACY_RETENTION_PERIOD || '').trim();
   const webAppUrl = (env.GOOGLE_APPS_SCRIPT_WEB_APP_URL || '').trim();
@@ -15,11 +15,11 @@ export function getJoinConfig(env = process.env) {
   };
 }
 
-export function normalizePhone(value) {
+function normalizePhone(value) {
   return String(value || '').replace(/\D/g, '');
 }
 
-export function validateJoinPayload(input) {
+function validateJoinPayload(input) {
   const body = input && typeof input === 'object' ? input : {};
   const name = String(body.name || '').trim();
   const phone = normalizePhone(body.phone);
@@ -54,7 +54,7 @@ export function validateJoinPayload(input) {
   };
 }
 
-export function isAllowedOrigin(req) {
+function isAllowedOrigin(req) {
   const origin = String(req.headers?.origin || '');
   const host = String(req.headers?.host || '');
   if (!origin || !host) return false;
@@ -65,7 +65,7 @@ export function isAllowedOrigin(req) {
   }
 }
 
-export function isValidAppsScriptUrl(value) {
+function isValidAppsScriptUrl(value) {
   try {
     const url = new URL(value);
     return url.protocol === 'https:' && url.hostname === 'script.google.com' && /\/macros\/s\/.+\/exec$/.test(url.pathname);
@@ -74,7 +74,7 @@ export function isValidAppsScriptUrl(value) {
   }
 }
 
-export async function forwardToAppsScript(payload, config, fetchImpl = fetch) {
+async function forwardToAppsScript(payload, config, fetchImpl = fetch) {
   if (!isValidAppsScriptUrl(config.webAppUrl)) throw new Error('invalid_web_app_url');
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15_000);
@@ -103,3 +103,12 @@ export async function forwardToAppsScript(payload, config, fetchImpl = fetch) {
     clearTimeout(timer);
   }
 }
+
+module.exports = {
+  forwardToAppsScript,
+  getJoinConfig,
+  isAllowedOrigin,
+  isValidAppsScriptUrl,
+  normalizePhone,
+  validateJoinPayload,
+};

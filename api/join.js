@@ -1,4 +1,4 @@
-import { forwardToAppsScript, getJoinConfig, isAllowedOrigin, validateJoinPayload } from './join-core.mjs';
+const { forwardToAppsScript, getJoinConfig, isAllowedOrigin, validateJoinPayload } = require('./join-core.cjs');
 
 const windows = new Map();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -19,7 +19,7 @@ function isRateLimited(req) {
   return current.count > MAX_REQUESTS;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') return res.status(405).json({ ok: false, message: '허용되지 않은 요청입니다.' });
   if (!isAllowedOrigin(req)) return res.status(403).json({ ok: false, message: '홈페이지에서 다시 시도해 주세요.' });
@@ -38,4 +38,4 @@ export default async function handler(req, res) {
     console.error('join_forward_failed', { code: error?.name === 'AbortError' ? 'timeout' : String(error?.message || 'unknown') });
     return res.status(502).json({ ok: false, message: '신청을 저장하지 못했습니다. 입력 내용은 그대로 유지됩니다. 잠시 후 다시 시도해 주세요.' });
   }
-}
+};

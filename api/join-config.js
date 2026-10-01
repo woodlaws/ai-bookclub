@@ -1,6 +1,6 @@
-import { getJoinConfig } from './join-core.mjs';
+const { getJoinConfig } = require('./join-core.cjs');
 
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') return res.status(405).json({ ok: false, message: '허용되지 않은 요청입니다.' });
   const config = getJoinConfig();
@@ -12,4 +12,4 @@ export default function handler(req, res) {
       retentionPeriod: config.retentionPeriod,
     },
   });
-}
+};
