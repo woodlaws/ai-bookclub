@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateKeyPairSync } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import core from '../api/join-core.cjs';
 
 const {
@@ -103,4 +104,10 @@ test('Sheets가 한 행 저장을 확인하지 못하면 실패한다', async ()
     }),
     /google_sheets_append_failed/
   );
+});
+
+test('clean URL에서도 가입 폼 스크립트를 절대경로로 불러온다', async () => {
+  const html = await readFile(new URL('../join/index.html', import.meta.url), 'utf8');
+  assert.match(html, /<script src="\/join\/join-form\.js" defer><\/script>/);
+  assert.doesNotMatch(html, /src="\.\/join-form\.js"/);
 });
