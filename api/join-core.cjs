@@ -1,17 +1,21 @@
+const { createSign } = require('node:crypto');
+
 const INTERESTS = new Set(['', 'AI 활용', '독서 습관', '글쓰기', '비즈니스 활용', '기타']);
 const APPLICATION_ID_PATTERN = /^JOIN-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 function getJoinConfig(env = process.env) {
   const operatorName = (env.JOIN_PRIVACY_OPERATOR_NAME || '').trim();
   const retentionPeriod = (env.JOIN_PRIVACY_RETENTION_PERIOD || '').trim();
-  const webAppUrl = (env.GOOGLE_APPS_SCRIPT_WEB_APP_URL || '').trim();
-  const sharedSecret = (env.GOOGLE_APPS_SCRIPT_SHARED_SECRET || '').trim();
+  const credentialsJson = (env.GOOGLE_SERVICE_ACCOUNT_JSON || '').trim();
+  const sheetId = (env.GOOGLE_SHEET_ID || '').trim();
+  const sheetName = (env.GOOGLE_SHEET_NAME || '').trim();
   return {
-    configured: Boolean(operatorName && retentionPeriod && webAppUrl && sharedSecret),
+    configured: Boolean(credentialsJson && sheetId && sheetName),
     operatorName,
     retentionPeriod,
-    webAppUrl,
-    sharedSecret,
+    credentialsJson,
+    sheetId,
+    sheetName,
   };
 }
 
@@ -65,50 +69,108 @@ function isAllowedOrigin(req) {
   }
 }
 
-function isValidAppsScriptUrl(value) {
+function parseServiceAccount(credentialsJson) {
+  let credentials;
   try {
-    const url = new URL(value);
-    return url.protocol === 'https:' && url.hostname === 'script.google.com' && /\/macros\/s\/.+\/exec$/.test(url.pathname);
+    credentials = JSON.parse(credentialsJson);
+    if (typeof credentials === 'string') credentials = JSON.parse(credentials);
   } catch {
-    return false;
+    throw Object.assign(new Error('invalid_service_account_json'), { code: 'invalid_config' });
   }
+  if (!credentials || typeof credentials !== 'object' || !credentials.client_email || !credentials.private_key) {
+    throw Object.assign(new Error('invalid_service_account_fields'), { code: 'invalid_config' });
+  }
+  return {
+    clientEmail: String(credentials.client_email),
+    privateKey: String(credentials.private_key).replace(/\\n/g, '\n'),
+  };
 }
 
-async function forwardToAppsScript(payload, config, fetchImpl = fetch) {
-  if (!isValidAppsScriptUrl(config.webAppUrl)) throw new Error('invalid_web_app_url');
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15_000);
-  try {
-    const response = await fetchImpl(config.webAppUrl, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        ...payload,
-        sharedSecret: config.sharedSecret,
-        privacyOperator: config.operatorName,
-        privacyRetentionPeriod: config.retentionPeriod,
-        privacyNoticeVersion: '2026-10-01',
-      }),
-      redirect: 'follow',
-      signal: controller.signal,
-    });
-    const text = await response.text();
-    let result;
-    try { result = JSON.parse(text); } catch { throw new Error('invalid_upstream_response'); }
-    if (!response.ok || result?.ok !== true || result?.applicationId !== payload.applicationId) {
-      throw new Error('upstream_rejected');
-    }
-    return { applicationId: result.applicationId, duplicate: result.duplicate === true };
-  } finally {
-    clearTimeout(timer);
+function base64Url(value) {
+  return Buffer.from(value).toString('base64url');
+}
+
+function createServiceAccountAssertion(credentials, nowSeconds = Math.floor(Date.now() / 1000)) {
+  const header = base64Url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
+  const claims = base64Url(JSON.stringify({
+    iss: credentials.clientEmail,
+    scope: 'https://www.googleapis.com/auth/spreadsheets',
+    aud: 'https://oauth2.googleapis.com/token',
+    iat: nowSeconds,
+    exp: nowSeconds + 3600,
+  }));
+  const unsigned = `${header}.${claims}`;
+  const signer = createSign('RSA-SHA256');
+  signer.update(unsigned);
+  signer.end();
+  return `${unsigned}.${signer.sign(credentials.privateKey, 'base64url')}`;
+}
+
+async function getGoogleAccessToken(config, fetchImpl = fetch) {
+  const credentials = parseServiceAccount(config.credentialsJson);
+  const assertion = createServiceAccountAssertion(credentials);
+  const response = await fetchImpl('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      assertion,
+    }),
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok || !result?.access_token) {
+    throw Object.assign(new Error('google_auth_failed'), { code: 'google_auth_failed' });
   }
+  return result.access_token;
+}
+
+function formatKoreanTimestamp(date = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+  }).formatToParts(date).reduce((result, part) => ({ ...result, [part.type]: part.value }), {});
+  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`;
+}
+
+function safeSheetText(value) {
+  const text = String(value || '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
+  return /^\s*[=+\-@]/.test(text) ? `'${text}` : text;
+}
+
+async function appendToGoogleSheet(payload, config, fetchImpl = fetch, date = new Date()) {
+  const accessToken = await getGoogleAccessToken(config, fetchImpl);
+  const range = `${config.sheetName}!A:G`;
+  const endpoint = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(config.sheetId)}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+  const values = [[
+    formatKoreanTimestamp(date),
+    safeSheetText(payload.name),
+    payload.phone,
+    safeSheetText(payload.email),
+    safeSheetText(payload.interest),
+    payload.privacyConsent ? '동의' : '미동의',
+    payload.newsConsent ? '동의' : '미동의',
+  ]];
+  const response = await fetchImpl(endpoint, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${accessToken}`, 'content-type': 'application/json' },
+    body: JSON.stringify({ range, majorDimension: 'ROWS', values }),
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok || result?.updates?.updatedRows !== 1) {
+    throw Object.assign(new Error('google_sheets_append_failed'), { code: 'sheets_append_failed' });
+  }
+  return { applicationId: payload.applicationId };
 }
 
 module.exports = {
-  forwardToAppsScript,
+  appendToGoogleSheet,
+  createServiceAccountAssertion,
+  formatKoreanTimestamp,
   getJoinConfig,
+  getGoogleAccessToken,
   isAllowedOrigin,
-  isValidAppsScriptUrl,
   normalizePhone,
+  parseServiceAccount,
+  safeSheetText,
   validateJoinPayload,
 };

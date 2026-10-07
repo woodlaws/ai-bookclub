@@ -6,6 +6,6 @@
     "check": "node --check community/community.js && node --check join/join-form.js && node --check api/join.js && node --check api/join-config.js && node --test tests/*.test.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   }
 }

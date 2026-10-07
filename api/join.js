@@ -1,4 +1,4 @@
-const { forwardToAppsScript, getJoinConfig, isAllowedOrigin, validateJoinPayload } = require('./join-core.cjs');
+const { appendToGoogleSheet, getJoinConfig, isAllowedOrigin, validateJoinPayload } = require('./join-core.cjs');
 
 const windows = new Map();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -21,9 +21,16 @@ function isRateLimited(req) {
 
 module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (req.method !== 'POST') return res.status(405).json({ ok: false, message: '허용되지 않은 요청입니다.' });
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ ok: false, message: '허용되지 않은 요청입니다.' });
+  }
   if (!isAllowedOrigin(req)) return res.status(403).json({ ok: false, message: '홈페이지에서 다시 시도해 주세요.' });
-  if (Number(req.headers['content-length'] || 0) > 12_000) return res.status(413).json({ ok: false, message: '입력 내용이 너무 깁니다.' });
+  const bodySize = Buffer.byteLength(JSON.stringify(req.body || {}), 'utf8');
+  if (Number(req.headers['content-length'] || 0) > 12_000 || bodySize > 12_000) {
+    return res.status(413).json({ ok: false, message: '입력 내용이 너무 깁니다.' });
+  }
   if (isRateLimited(req)) return res.status(429).json({ ok: false, message: '요청이 많습니다. 10분 뒤 다시 시도해 주세요.' });
 
   const config = getJoinConfig();
@@ -32,10 +39,10 @@ module.exports = async function handler(req, res) {
   if (!validation.ok) return res.status(validation.code === 'spam' ? 400 : 422).json({ ok: false, message: validation.message });
 
   try {
-    const result = await forwardToAppsScript(validation.value, config);
-    return res.status(200).json({ ok: true, applicationId: result.applicationId, duplicate: result.duplicate });
+    const result = await appendToGoogleSheet(validation.value, config);
+    return res.status(200).json({ ok: true, applicationId: result.applicationId });
   } catch (error) {
-    console.error('join_forward_failed', { code: error?.name === 'AbortError' ? 'timeout' : String(error?.message || 'unknown') });
+    console.error('join_sheets_failed', { code: String(error?.code || 'unknown') });
     return res.status(502).json({ ok: false, message: '신청을 저장하지 못했습니다. 입력 내용은 그대로 유지됩니다. 잠시 후 다시 시도해 주세요.' });
   }
 };

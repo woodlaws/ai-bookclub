@@ -1,7 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { generateKeyPairSync } from 'node:crypto';
 import core from '../api/join-core.cjs';
-const { forwardToAppsScript, getJoinConfig, normalizePhone, validateJoinPayload } = core;
+
+const {
+  appendToGoogleSheet,
+  formatKoreanTimestamp,
+  getJoinConfig,
+  normalizePhone,
+  safeSheetText,
+  validateJoinPayload,
+} = core;
 
 const validPayload = (overrides = {}) => ({
   applicationId: 'JOIN-550e8400-e29b-41d4-a716-446655440000',
@@ -17,55 +26,81 @@ const validPayload = (overrides = {}) => ({
   ...overrides,
 });
 
+const { privateKey } = generateKeyPairSync('rsa', { modulusLength: 2048 });
+const serviceAccount = JSON.stringify({
+  client_email: 'sheet-writer@example.iam.gserviceaccount.com',
+  private_key: privateKey.export({ type: 'pkcs8', format: 'pem' }),
+});
 const config = {
-  webAppUrl: 'https://script.google.com/macros/s/example/exec',
-  sharedSecret: 'test-secret',
-  operatorName: '테스트 운영자',
-  retentionPeriod: '테스트 보유기간',
+  credentialsJson: serviceAccount,
+  sheetId: 'test-sheet-id',
+  sheetName: '시트1',
+  operatorName: '',
+  retentionPeriod: '',
 };
 
-test('설정 누락 시 접수가 비활성화된다', () => {
+test('Sheets 환경 변수 세 가지가 있을 때만 접수가 활성화된다', () => {
   assert.equal(getJoinConfig({}).configured, false);
-  assert.equal(getJoinConfig({ ...config, GOOGLE_APPS_SCRIPT_WEB_APP_URL: config.webAppUrl }).configured, false);
-  assert.equal(getJoinConfig({
-    GOOGLE_APPS_SCRIPT_WEB_APP_URL: config.webAppUrl,
-    GOOGLE_APPS_SCRIPT_SHARED_SECRET: config.sharedSecret,
-    JOIN_PRIVACY_OPERATOR_NAME: config.operatorName,
-    JOIN_PRIVACY_RETENTION_PERIOD: config.retentionPeriod,
-  }).configured, true);
+  assert.equal(getJoinConfig({ GOOGLE_SERVICE_ACCOUNT_JSON: serviceAccount }).configured, false);
+  const result = getJoinConfig({
+    GOOGLE_SERVICE_ACCOUNT_JSON: serviceAccount,
+    GOOGLE_SHEET_ID: config.sheetId,
+    GOOGLE_SHEET_NAME: config.sheetName,
+  });
+  assert.equal(result.configured, true);
+  assert.equal(result.sheetName, '시트1');
 });
 
-test('휴대전화 하이픈을 제거하고 필수·선택 항목을 검증한다', () => {
+test('휴대전화 앞자리 0을 보존하고 필수·선택 항목을 검증한다', () => {
   assert.equal(normalizePhone('010-1234-5678'), '01012345678');
   const result = validateJoinPayload(validPayload());
   assert.equal(result.ok, true);
   assert.equal(result.value.phone, '01012345678');
   assert.equal(validateJoinPayload(validPayload({ privacyConsent: false })).ok, false);
   assert.equal(validateJoinPayload(validPayload({ email: 'wrong' })).ok, false);
+  assert.equal(validateJoinPayload(validPayload({ interest: '허용되지 않은 값' })).ok, false);
 });
 
-test('Apps Script 성공 본문과 신청 ID가 일치할 때만 성공한다', async () => {
-  const payload = validateJoinPayload(validPayload()).value;
-  const result = await forwardToAppsScript(payload, config, async (_url, options) => {
-    const sent = JSON.parse(options.body);
-    assert.equal(sent.sharedSecret, config.sharedSecret);
-    return new Response(JSON.stringify({ ok: true, applicationId: payload.applicationId }), { status: 200 });
-  });
-  assert.deepEqual(result, { applicationId: payload.applicationId, duplicate: false });
+test('한국 시간 형식과 수식 시작 입력을 안전한 문자열로 만든다', () => {
+  assert.equal(formatKoreanTimestamp(new Date('2026-10-07T00:00:00.000Z')), '2026-10-07 09:00:00');
+  assert.equal(safeSheetText('=IMPORTXML("https://example.com")'), '\'=IMPORTXML("https://example.com")');
+  assert.equal(safeSheetText('일반 입력'), '일반 입력');
 });
 
-test('HTTP 200이어도 Apps Script 실패 본문이면 실패한다', async () => {
+test('Google Sheets A:G에 RAW 방식으로 한 행을 추가한다', async () => {
   const payload = validateJoinPayload(validPayload()).value;
+  const calls = [];
+  const fetchImpl = async (url, options) => {
+    calls.push({ url: String(url), options });
+    if (String(url).includes('oauth2.googleapis.com/token')) {
+      assert.match(String(options.body), /grant_type=/);
+      return new Response(JSON.stringify({ access_token: 'test-access-token' }), { status: 200 });
+    }
+    return new Response(JSON.stringify({ updates: { updatedRows: 1 } }), { status: 200 });
+  };
+
+  const result = await appendToGoogleSheet(payload, config, fetchImpl, new Date('2026-10-07T00:00:00.000Z'));
+  assert.equal(result.applicationId, payload.applicationId);
+  assert.equal(calls.length, 2);
+  assert.match(calls[1].url, /values\/%EC%8B%9C%ED%8A%B81!A%3AG:append/);
+  assert.match(calls[1].url, /valueInputOption=RAW/);
+  assert.match(calls[1].url, /insertDataOption=INSERT_ROWS/);
+  assert.equal(calls[1].options.headers.authorization, 'Bearer test-access-token');
+  const sent = JSON.parse(calls[1].options.body);
+  assert.deepEqual(sent.values[0], [
+    '2026-10-07 09:00:00', '홍길동', '01012345678', 'reader@example.com', 'AI 활용', '동의', '미동의',
+  ]);
+});
+
+test('Sheets가 한 행 저장을 확인하지 못하면 실패한다', async () => {
+  const payload = validateJoinPayload(validPayload()).value;
+  let call = 0;
   await assert.rejects(
-    () => forwardToAppsScript(payload, config, async () => new Response(JSON.stringify({ ok: false, error: 'save_failed' }), { status: 200 })),
-    /upstream_rejected/
+    () => appendToGoogleSheet(payload, config, async () => {
+      call += 1;
+      if (call === 1) return new Response(JSON.stringify({ access_token: 'test-access-token' }), { status: 200 });
+      return new Response(JSON.stringify({ error: { status: 'PERMISSION_DENIED' } }), { status: 403 });
+    }),
+    /google_sheets_append_failed/
   );
-});
-
-test('중복 신청 ID 응답은 저장 확인 성공으로 처리하되 duplicate를 유지한다', async () => {
-  const payload = validateJoinPayload(validPayload()).value;
-  const result = await forwardToAppsScript(payload, config, async () => new Response(JSON.stringify({
-    ok: true, duplicate: true, applicationId: payload.applicationId,
-  }), { status: 200 }));
-  assert.equal(result.duplicate, true);
 });
